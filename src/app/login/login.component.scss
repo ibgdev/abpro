@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Playwrite+ES+Deco+Guides&family=Roboto+Slab:wght@100..900&display=swap');
+
+.login-card{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#52a5a3 ;
+}
+
+.logo-card{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card form{
+    width: 450px;
+}
+
+form h1{
+    font-family: "Noto Sans JP", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    text-align: center;
+    font-weight: bold;
+    color: #112030;
+}
+
+form button{
+    background-color: #112030;
+    color: whitesmoke;
+}
+
+form .links{
+    color: #768788;
+}
+
+input:focus {
+    border-color: #52a5a3 !important; 
+    box-shadow: 0 0 0 0.25rem rgba(#52a5a3, 0.25); 
+}
+
+input[type=checkbox]:checked{
+    background-color: #52a5a3;
+    border-color: #52a5a3;
+}
+
+.alert{
+    padding: 5px;
+}

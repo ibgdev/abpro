@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row justify-content-center mt-5 p-2">
+        <app-digital-clock class=""></app-digital-clock>
+    </div>
+
+    <div class="row mt-5 border border-2 border-black p-5 rounded shadow-lg" style="background-color: whitesmoke;">
+        <div class="col-12 col-md-6 text-center p-3">
+            <h2>Arrivée</h2>
+            <p style="text-align: justify;">Veuillez marquer votre présence en cliquant sur le bouton d'arrivée
+                entre <strong>8:00 AM</strong> et
+                <strong>10:00 AM</strong>. Les arrivées en dehors de cet intervalle sont interdites. Si vous êtes en
+                retard, vous recevrez un avertissement.
+            </p>
+            <button class="btn btn-warning btn-hover text-white" [disabled]="isDisabled"
+                (click)="arivee()">Arrivée</button>
+        </div>
+
+        <div class="col-12 col-md-6 border-start border-2 border-black text-center p-3">
+            <h2>Départ</h2>
+            <p style="text-align: justify;">Veuillez marquer votre départ en cliquant sur le bouton de départ entre
+                <strong>8:00 AM</strong> et
+                <strong>5:00 PM</strong>. Les départs en dehors de cet intervalle ne sont pas autorisés. Tout départ
+                en
+                dehors de ces horaires sera signalé pour vérification.
+            </p>
+            <button class="btn btn-danger btn-hover" [disabled]="isDisabled" (click)="depart()">Départ</button>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,39 @@
+
+.clock-container {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    border-radius: 20px;
+
+    width: 350px;
+    margin: 20px auto;
+    animation: fadeIn 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.time {
+    font-size: 70px;
+    font-weight: bold;
+    color: #112030;
+    letter-spacing: 4px;
+}
+
+.date {
+    font-size: 22px;
+    font-weight: 300;
+    color: #112030;
+    text-transform: capitalize;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

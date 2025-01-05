@@ -1,0 +1,67 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light shadow">
+    <div class="container-fluid">
+        <!-- Logo and title -->
+        <img class="navbar-brand rounded-circle ms-5" src="assets/AbsancePro-transp.png"
+            style="width: 60px; height: 70px;">
+        <div class="mx-auto">
+            <span class="navbar-text fs-5" style="color: #112030;">
+                <strong>AbsencesPro - Employée</strong>
+            </span>
+        </div>
+
+        <!-- Navigation items -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto me-5 mb-2 mb-lg-0">
+                <li class="nav-item me-4 dropdown">
+                    <a class="nav-link" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="40px"
+                            fill="#112030">
+                            <path
+                                d="M160-200v-66.67h80v-296q0-83.66 49.67-149.5Q339.33-778 420-796v-24q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v24q80.67 18 130.33 83.83Q720-646.33 720-562.67v296h80V-200H160Zm320-301.33ZM480-80q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM306.67-266.67h346.66v-296q0-72-50.66-122.66Q552-736 480-736t-122.67 50.67q-50.66 50.66-50.66 122.66v296Z" />
+                        </svg>
+                        <span
+                            [class]="'position-absolute top-5 start-90 translate-middle badge rounded-pill bg-danger '">
+                            <span>0</span>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" href="#" disabled>Action 1</a>
+                        <a class="dropdown-item" href="#">Action 2</a>
+                    </div>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link active me-3" aria-current="page" routerLink="/employee/presence"
+                        routerLinkActive="active">Présence</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link" routerLink="/employee/historique" routerLinkActive="active">Historique</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link" routerLink="/resume" routerLinkActive="active">Avertissements</a>
+                </li>
+                <li class="nav-item me-4 dropdown">
+                    <a class="nav-link" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mon Compte
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" href="#" disabled>
+                            <i class="fas fa-user me-2"></i> Profile
+                        </a>
+                        <a class="dropdown-item logout" (click)="logout()">
+                            <i class="fas fa-sign-out-alt me-2"></i> Déconnecter
+                        </a>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>

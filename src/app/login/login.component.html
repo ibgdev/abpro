@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="logo-card col-6">
+            <img src="assets/AbsancePro-transp.png" alt="nexans_logo" class="img-fluid w-75" draggable="false">
+        </div>
+        <div class="login-card col-6 shadow bg-gradient">
+            <div class="border border-2 p-5 rounded bg-white">
+                <form #loginForm="ngForm" (ngSubmit)="Onlogin()" novalidate>
+                    <h1 class="text-center mb-4">Se connecter</h1>
+                    <div *ngIf="error['LoginError']" class="alert alert-danger text-center" style="height: min-content;">
+                        {{ error['LoginError'] }}
+                    </div>
+                    <!-- Email -->
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" name="email" [(ngModel)]="email" id="email"
+                            placeholder="nom@exemple.com" required email #emailField="ngModel">
+                        <label for="email">Adresse e-mail</label>
+                        <!-- Errors for Email -->
+                        <div *ngIf="emailField.invalid && emailField.touched" class="text-danger small">
+                            <div *ngIf="emailField.errors?.['required']">L'adresse e-mail est obligatoire.</div>
+                            <div *ngIf="emailField.errors?.['email']">Veuillez entrer une adresse e-mail valide.</div>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-floating mb-4">
+                        <input type="password" class="form-control" name="password" [(ngModel)]="password" id="password"
+                            placeholder="Mot de passe" required minlength="6" #passwordField="ngModel">
+                        <label for="password">Mot de passe</label>
+                        <!-- Errors for Password -->
+                        @if(passwordField.invalid && passwordField.touched){
+                        <div class="text-danger small">
+                            @if (passwordField.errors?.['required']) {
+                            <div>Le mot de passe est obligatoire.</div>
+                            }
+                            @if (passwordField.errors?.['minlength']) {
+                            <div>Le mot de passe doit contenir au moins 6 caractères.</div>
+                            }
+
+                        </div>
+                        }
+
+                    </div>
+
+                    <!-- Remember Me and Forgot Password -->
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Se souvenir de moi</label>
+                        </div>
+                        <a href="#" class="links">Mot de passe oublié ?</a>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="d-flex justify-content-center flex-wrap mt-1">
+                        <button type="submit" class="btn w-100 m-2 py-2" [disabled]="loginForm.invalid">Se connecter
+                        </button>
+                        <a routerLink="/register" routerLinkActive="active" class="links">Je n'ai pas de compte</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
