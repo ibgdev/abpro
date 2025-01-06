@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService, private router: Router) { }
   ngOnInit(): void {
-    const isLoggedIn = localStorage.getItem('loggedin') === 'true';
+    const isLoggedIn = sessionStorage.getItem('loggedin') === 'true';
     if (isLoggedIn) {
       this.router.navigate(['/employee']);
     }
@@ -32,11 +32,11 @@ export class LoginComponent implements OnInit {
       (response) => {
         if (response.success) {
           // Store all necessary information in localStorage
-          localStorage.setItem('loggedin', 'true');
-          localStorage.setItem('name', response.fullname);
-          localStorage.setItem('email', response.email);
-          localStorage.setItem('role', response.role);
-          localStorage.setItem('id', response.id);
+          sessionStorage.setItem('loggedin', 'true');
+          sessionStorage.setItem('name', response.fullname);
+          sessionStorage.setItem('email', response.email);
+          sessionStorage.setItem('role', response.role);
+          sessionStorage.setItem('id', response.id);
           if (response.role == "employee") {
             this.router.navigate(['/employee']);
           }

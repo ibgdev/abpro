@@ -1,0 +1,73 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="login-card col-6 shadow bg-gradient">
+            <div class="border border-2 p-5 rounded bg-white">
+                <form #registerForm="ngForm" (ngSubmit)="onRegister()" novalidate>
+                    <h1 class="text-center mb-4">S'inscrire</h1>
+
+                    <!-- Full Name -->
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="full_name" [(ngModel)]="full_name" id="full_name"
+                            placeholder="Nom Complet" required #fullNameField="ngModel">
+                        <label for="full_name">Nom Complet</label>
+                        <div *ngIf="fullNameField.invalid && fullNameField.touched" class="text-danger small">
+                            <div *ngIf="fullNameField.errors?.['required']">Le nom complet est obligatoire.</div>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" name="email" [(ngModel)]="email" id="email"
+                            placeholder="nom@exemple.com" required email #emailField="ngModel">
+                        <label for="email">Adresse e-mail</label>
+                        <div *ngIf="emailField.invalid && emailField.touched" class="text-danger small">
+                            <div *ngIf="emailField.errors?.['required']">L'adresse e-mail est obligatoire.</div>
+                            <div *ngIf="emailField.errors?.['email']">Veuillez entrer une adresse e-mail valide.</div>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-floating mb-4">
+                        <input type="password" class="form-control" name="password" [(ngModel)]="password" id="password"
+                            placeholder="Mot de passe" required minlength="6" #passwordField="ngModel">
+                        <label for="password">Mot de passe</label>
+                        <div *ngIf="passwordField.invalid && passwordField.touched" class="text-danger small">
+                            <div *ngIf="passwordField.errors?.['required']">Le mot de passe est obligatoire.</div>
+                            <div *ngIf="passwordField.errors?.['minlength']">Le mot de passe doit contenir au moins 6
+                                caractères.</div>
+                        </div>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="form-floating mb-4">
+                        <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="confirmPassword"
+                            id="confirmPassword" placeholder="Confirmer le mot de passe" required minlength="6"
+                            #confirmPasswordField="ngModel">
+                        <label for="confirmPassword">Confirmer le mot de passe</label>
+                        <div *ngIf="confirmPasswordField.invalid && confirmPasswordField.touched"
+                            class="text-danger small">
+                            <div *ngIf="confirmPasswordField.errors?.['required']">La confirmation du mot de passe est
+                                obligatoire.</div>
+                            <div *ngIf="confirmPasswordField.errors?.['minlength']">Le mot de passe doit contenir au
+                                moins 6 caractères.</div>
+                        </div>
+                        <div *ngIf="password !== confirmPassword && confirmPasswordField.touched"
+                            class="text-danger small">
+                            Les mots de passe ne correspondent pas.
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="d-flex justify-content-center flex-wrap mt-1">
+                        <button type="submit" class="btn w-100 m-2 py-2"
+                            [disabled]="registerForm.invalid">S'inscrire</button>
+                        <a routerLink="/login" routerLinkActive="active" class="links">J'ai déja un compte</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="logo-card col-6">
+            <img src="assets/AbsancePro-transp.png" alt="nexans_logo" class="img-fluid w-75" draggable="false">
+        </div>
+    </div>
+</div>

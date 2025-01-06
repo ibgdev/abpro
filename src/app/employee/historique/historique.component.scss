@@ -1,5 +1,35 @@
-.content{
-    background-color: white;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;800&display=swap");
+
+.content {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
     width: 90%;
     margin: 0 auto;
+    font-family: "Poppins", serif;
+    .row {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 10% auto;
+    }
+
+    .container{
+        background: rgb(252, 252, 252);
+        margin-top: 3%;
+        padding: 20px 50px;
+    }
+
 }
+
+h1 {
+    font-weight: 800;
+    margin: 1rem 0 0;
+    text-align: center;
+}
+
+p{
+    text-align: center;
+    margin: 10px 0;
+}
+

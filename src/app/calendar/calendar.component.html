@@ -1,0 +1,15 @@
+<div class="calendar">
+    <!-- Weeks -->
+    <div class="weekdays">
+        <div *ngFor="let day of weekDays">{{ day }}</div>
+    </div>
+
+    <!-- dates -->
+    <div class="dates">
+        <div *ngFor="let week of calendar" class="week">
+            <div *ngFor="let day of week" [ngClass]="{ 'current-month': day.isCurrentMonth }" class="date">
+                {{ day.date ? day.date.split('-')[2] : '' }}
+            </div>
+        </div>
+    </div>
+</div>

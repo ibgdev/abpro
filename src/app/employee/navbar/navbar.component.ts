@@ -9,13 +9,11 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
+  nom = sessionStorage.getItem("name");
   constructor(private router: Router) {}
 
   logout(): void {
-    localStorage.setItem('loggedin','false');
-    localStorage.removeItem('name');
-    localStorage.removeItem('role');
-    localStorage.removeItem('id');
+    sessionStorage.clear();
     this.router.navigate(['/login']);
   }
 }

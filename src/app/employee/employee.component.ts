@@ -14,7 +14,7 @@ export class EmployeeComponent implements OnInit {
     constructor( private router: Router) { }
   ngOnInit(): void {
     // Controle access
-    const isLoggedIn = localStorage.getItem('loggedin') === 'true';
+    const isLoggedIn = sessionStorage.getItem('loggedin') === 'true';
     if (!isLoggedIn) {
       this.router.navigate(['/login']);
     }

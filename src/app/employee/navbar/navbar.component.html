@@ -51,9 +51,9 @@
                     <a class="nav-link" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Mon Compte
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="#" disabled>
-                            <i class="fas fa-user me-2"></i> Profile
+                    <div class="dropdown-menu text-break" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" href="#" disabled style="max-width: max-content; text-wrap:initial;">
+                            <i class="fas fa-user me-2"></i> {{nom}}
                         </a>
                         <a class="dropdown-item logout" (click)="logout()">
                             <i class="fas fa-sign-out-alt me-2"></i> Déconnecter
