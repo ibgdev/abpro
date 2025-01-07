@@ -18,5 +18,8 @@ export class EmployeeComponent implements OnInit {
     if (!isLoggedIn) {
       this.router.navigate(['/login']);
     }
+    if (sessionStorage.getItem('role') === 'admin') {
+      this.router.navigate(['/admin']);
+    }
   }
 }

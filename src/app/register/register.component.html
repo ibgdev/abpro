@@ -38,6 +38,7 @@
                         </div>
                     </div>
 
+
                     <!-- Confirm Password -->
                     <div class="form-floating mb-4">
                         <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="confirmPassword"
@@ -57,6 +58,20 @@
                         </div>
                     </div>
 
+                    <!-- Departments -->
+                    <div class="form-floating mb-4">
+                        <select class="form-select" name="departments" [(ngModel)]="selectedDepartment" id="departments"
+                            required #departmentsField="ngModel">
+                            <option *ngFor="let department of departments" [value]="department['id']">
+                                {{ department['department_name'] }}
+                            </option>
+                        </select>
+                        <label for="departments">Département</label>
+                        <div *ngIf="departmentsField.invalid && departmentsField.touched" class="text-danger small">
+                            <div *ngIf="departmentsField.errors?.['required']">Le département est obligatoire.</div>
+                        </div>
+                    </div>
+                    
                     <!-- Submit Button -->
                     <div class="d-flex justify-content-center flex-wrap mt-1">
                         <button type="submit" class="btn w-100 m-2 py-2"

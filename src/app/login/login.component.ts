@@ -39,6 +39,8 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('id', response.id);
           if (response.role == "employee") {
             this.router.navigate(['/employee']);
+          }else if (response.role == "admin") {
+            this.router.navigate(['/admin'])
           }
         } else {
           this.error["LoginError"] = response.message || 'Invalid credentials.';
