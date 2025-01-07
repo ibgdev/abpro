@@ -1,0 +1,14 @@
+.fill{
+    fill:#52a5a3;
+}
+.nav-link.active{
+    background-color: #52a5a3;
+    font-weight: bold;
+    .fill{
+        fill: white;
+    }
+}
+
+.d-flex.flex-column {
+    background-color: #112030;
+}

@@ -3,7 +3,7 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light shadow">
     <div class="container-fluid">
         <!-- Logo and title -->
-        <img class="navbar-brand rounded-circle ms-5" src="assets/AbsancePro-transp.png"
+        <img class="navbar-brand ms-5" src="assets/AbsancePro-transp.png"
             style="width: 60px; height: 70px;">
         <div class="mx-auto">
             <span class="navbar-text fs-5" style="color: #112030;">
@@ -49,11 +49,11 @@
                 </li>
                 <li class="nav-item me-4 dropdown">
                     <a class="nav-link" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Mon Compte
+                        {{nom}}
                     </a>
                     <div class="dropdown-menu text-break" aria-labelledby="dropdownId">
                         <a class="dropdown-item" href="#" disabled style="max-width: max-content; text-wrap:initial;">
-                            <i class="fas fa-user me-2"></i> {{nom}}
+                            <i class="fas fa-user me-2"></i> Profile
                         </a>
                         <a class="dropdown-item logout" (click)="logout()">
                             <i class="fas fa-sign-out-alt me-2"></i> Déconnecter
