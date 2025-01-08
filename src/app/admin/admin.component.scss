@@ -1,0 +1,24 @@
+.app-container {
+    display: flex;
+    height: 100vh; /* Ensure the container takes up the full height of the viewport */
+    width: 100%; /* Full width of the viewport */
+    overflow: hidden; /* Prevent scrolling issues */
+
+    .sidebar {
+        flex-shrink: 0; /* Prevent the sidebar from shrinking */
+        width: 280px; /* Fixed width for the sidebar */
+        height: 100%; /* Ensure it spans the full height */
+        position: fixed; /* Keep it fixed on the left */
+        left: 0;
+        top: 0;
+        z-index: 100; /* Ensure it stays on top of content */
+    }
+
+    .pages {
+        margin-left: 280px; /* Leave space for the sidebar */
+        flex-grow: 1; /* Make the content take up remaining space */
+        overflow-y: auto; /* Enable scrolling for content if needed */
+        background-color: #f8f9fa; /* Light background color for contrast */
+        padding: 20px; /* Add padding to the content area */
+    }
+}
