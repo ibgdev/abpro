@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
   password: string = '';
   confirmPassword: string = '';
   selectedDepartment: string = '';
+  role: string = 'employee';
 
   constructor(private router: Router, private DepartmentsService: DepartmentsService, private registerService: RegisterService) { }
 
@@ -43,7 +44,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.registerService.register(this.full_name, this.email, this.password, this.selectedDepartment).subscribe(
+    this.registerService.register(this.full_name, this.email, this.password, this.selectedDepartment,this.role).subscribe(
       (response) => {
         if (response.success) {
           Swal.fire({
