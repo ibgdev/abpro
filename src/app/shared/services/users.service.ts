@@ -6,11 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsersService {
-  private apiUrl = "http://localhost:8080/get-users-api.php"
+  private apiUrl = "http://localhost:8080/get-users-api.php";
+  private deleteUrl = "http://localhost:8080/delete-users-api.php";
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getUsers() : Observable<any>{
-    return this.http.get<any>(this.apiUrl)
+  getUsers(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
+  }
+
+  deleteUser(id: number) {
+    return this.http.get<any>(`${this.deleteUrl}?id=${id}`);
   }
 }
+
