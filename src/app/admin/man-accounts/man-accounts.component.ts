@@ -77,7 +77,6 @@ export class ManAccountsComponent implements OnInit {
     }
     return "Pas de departement"
   }
-
   //Add New User
   addAccount() {
     if (this.full_name && this.email && this.password && this.department) {
