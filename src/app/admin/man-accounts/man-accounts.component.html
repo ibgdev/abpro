@@ -40,7 +40,7 @@
                 @for(user of filteredUsers(); track $index){
                 <tr>
                     <td>{{user.id}}</td> <!-- User id-->
-                    <td><a href="#">{{user.full_name}}</a></td>
+                    <td style="color: rgb(83, 83, 126); font-weight: bold;">{{user.full_name}}</td>
                     <td>{{user.email}}</td>
                     <td>{{getDepartmentName(user.department_id)}}</td> <!-- Creation Date-->
                     <td>{{user.created_at}}</td> <!-- Creation Date-->
@@ -56,7 +56,6 @@
                 }
 
                 }
-
 
             </tbody>
         </table>

@@ -1,1 +1,41 @@
-<p>man-departments works!</p>
+<div class="table-responsive">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-xs-5">
+                    <h2>Gestion des <b>Département</b></h2>
+                </div>
+                <div class="col-xs-7">
+                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Adddepartment">
+                        <i class="material-icons">&#xE147; </i> <span>Nouveau Département</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom de Département</th>
+                    <th>Administrateur</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(department of departments; track $index){
+                <tr>
+                    <td>{{department.id}}</td> <!-- department id-->
+                    <td style="color: rgb(83, 83, 126); font-weight: bold;">{{department.department_name}}</td>
+                    <td>{{ department.admin_id ? getUserName(department.admin_id) : "sans d'admin" }}</td>
+                    <td> <!-- Action -->
+                        <a data-bs-toggle="modal" data-bs-target="#Adddepartment" class="settings cursor" title="Settings"
+                            data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                        <a class="delete cursor" title="Delete"
+                            data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
