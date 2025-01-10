@@ -26,6 +26,7 @@ export class ManAccountsComponent implements OnInit {
   department: string = '';
   role: string = 'employee';
   searchTerm: string = '';
+  working:string ='';
 
   constructor(private usersService: UsersService,
     private DepartmentsService: DepartmentsService,
@@ -44,6 +45,9 @@ export class ManAccountsComponent implements OnInit {
     })
   }
 
+  workingedit(msg : string){
+    this.working = msg;
+  }
   //filtred users
 
   filteredUsers() {
@@ -85,14 +89,13 @@ export class ManAccountsComponent implements OnInit {
         role: this.role
       };
 
-      console.log('Adding User:', data);
 
       this.RegisterService.register(data.fullname, data.email, data.password, data.department, data.role).subscribe(
         (response) => {
           if (response.success) {
             Swal.fire({
               title: 'Succès!',
-              text: 'Vous avez crée un compte avec succès.',
+              text: response.message,
               icon: 'success',
               confirmButtonText: 'Confirmer',
             }).then(() => {
@@ -124,7 +127,7 @@ export class ManAccountsComponent implements OnInit {
 
   // edit user settings
   settings(userId: number, fullname: string, email: string, password: string, department: string, role: string) {
-    console.log(userId, fullname, email, password, department, role)
+    this.working = "Ajouter Nouveau Utilisateur";
     this.full_name = fullname;
     this.email = email;
     this.password = password;
