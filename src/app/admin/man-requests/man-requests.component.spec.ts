@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManAbsencesComponent } from './man-absences.component';
+import { ManRequestsComponent } from './man-requests.component';
 
-describe('ManAbsencesComponent', () => {
-  let component: ManAbsencesComponent;
-  let fixture: ComponentFixture<ManAbsencesComponent>;
+describe('ManRequestsComponent', () => {
+  let component: ManRequestsComponent;
+  let fixture: ComponentFixture<ManRequestsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ManAbsencesComponent]
+      imports: [ManRequestsComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ManAbsencesComponent);
+    fixture = TestBed.createComponent(ManRequestsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

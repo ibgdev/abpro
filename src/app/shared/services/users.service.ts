@@ -18,5 +18,6 @@ export class UsersService {
   deleteUser(id: number) {
     return this.http.get<any>(`${this.deleteUrl}?id=${id}`);
   }
+  
 }
 

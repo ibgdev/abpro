@@ -1,0 +1,91 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="account-settings shadow">
+            <!-- Back Button -->
+            <div class="back-button">
+                <a href="#" class="btn btn-secondary back-btn"><i class="fas fa-arrow-left"></i> Back</a>
+            </div>
+
+            <!-- User Profile Section -->
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                        alt="User Avatar">
+                </div>
+                <h4 class="user-name">{{name}}</h4>
+                <h6 class="user-email">{{email}}</h6>
+            </div>
+
+            <!-- About Section -->
+            <div class="about">
+                <h5>About Me</h5>
+                <p>je suis {{role}}, je suis un {{role}} de département : {{getDepartmentName()}}</p>
+            </div>
+
+            <!-- Additional Details Section -->
+            <div class="details">
+                <h5>Details</h5>
+                <ul class="details-list">
+                    <li><strong>Email :</strong> {{email}}</li>
+                    <li><strong>Département :</strong> {{getDepartmentName()}}</li>
+                    <li><strong>profession :</strong> {{role}}</li>
+                </ul>
+            </div>
+
+            <!-- Edit Password Section -->
+            <div class="edit-password">
+                <h5>Edit Password</h5>
+                <form #changePasswordForm="ngForm" (ngSubmit)="changePassword()" novalidate>
+                    <!-- Current Password -->
+                    <div class="form-group">
+                        <label for="current-password">Current Password</label>
+                        <input type="password" id="current-password" name="current-password" class="form-control"
+                            [(ngModel)]="current_password" required placeholder="Enter current password">
+                        <div *ngIf="!changePasswordForm.controls['current-password']?.valid && changePasswordForm.controls['current-password']?.touched"
+                            class="text-danger small">
+                            Current password is required.
+                        </div>
+                    </div>
+
+                    <!-- New Password -->
+                    <div class="form-group">
+                        <label for="new-password">New Password</label>
+                        <input type="password" id="new-password" name="new-password" class="form-control"
+                            [(ngModel)]="new_password" #newPasswordField="ngModel" minlength="6" required
+                            placeholder="Enter new password">
+                        <div *ngIf="newPasswordField.errors && newPasswordField.touched" class="text-danger small">
+                            <div *ngIf="newPasswordField.errors['required']">New password is required.</div>
+                            <div *ngIf="newPasswordField.errors['minlength']">Password must be at least 6 characters
+                                long.</div>
+                        </div>
+                    </div>
+
+                    <!-- Confirm New Password -->
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm New Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" class="form-control"
+                            [(ngModel)]="conf_pass" #confirmPasswordField="ngModel" required
+                            placeholder="Confirm new password">
+                        <div *ngIf="confirmPasswordField.errors && confirmPasswordField.touched"
+                            class="text-danger small">
+                            <div *ngIf="confirmPasswordField.errors['required']">Confirm password is required.</div>
+                        </div>
+                        <div *ngIf="new_password !== conf_pass && confirmPasswordField.touched"
+                            class="text-danger small">
+                            Passwords do not match.
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary save-password-btn"
+                        [disabled]="!changePasswordForm.valid || new_password !== conf_pass">
+                        Save Password
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

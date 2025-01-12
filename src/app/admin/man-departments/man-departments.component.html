@@ -29,9 +29,9 @@
                     <td>{{ department.admin_id ? getUserName(department.admin_id) : "sans d'admin" }}</td>
                     <td> <!-- Action -->
                         <a data-bs-toggle="modal" data-bs-target="#Adddepartment" class="settings cursor"
-                            title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                            title="Settings" data-toggle="tooltip"><i class="material-icons" (click)="settings(department.id,department.department_name,department.admin_id)">&#xE8B8;</i></a>
                         <a class="delete cursor" title="Delete" data-toggle="tooltip"><i
-                                class="material-icons">&#xE5C9;</i></a>
+                                class="material-icons" (click)="deleteDepartment(department.id)">&#xE5C9;</i></a>
                     </td>
                 </tr>
                 }
@@ -41,7 +41,7 @@
 </div>
 
 
-<!-- Add new User Modal -->
+<!-- Add department Modal -->
 <div class="modal fade" id="Adddepartment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
     #addDepartmentModal>
     <div class="modal-dialog">
@@ -67,11 +67,9 @@
                         <label for="department" class="col-form-label">Choisir l'Administrateur :</label>
                         <select class="form-control" name="users" [(ngModel)]="user" #userModal="ngModel">
                             <option value=""></option>
-                            @for(user of users; track $index){
-                                @if(user.role == "admin" && user.id != 0){
-                                    <option value="{{user.id}}">{{user.full_name}}</option>
-                                }
-                            }
+                            <option *ngFor="let u of availableAdmins" [value]="u.id">
+                                {{ u.full_name }}
+                            </option>
                         </select>
                     </div>
                     <div class="modal-footer">

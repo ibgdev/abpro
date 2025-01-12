@@ -52,7 +52,7 @@
                         {{nom}}
                     </a>
                     <div class="dropdown-menu text-break" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="#" disabled style="max-width: max-content; text-wrap:initial;">
+                        <a routerLink="/profile" routerLinkActive="active" class="dropdown-item" href="#" disabled style="max-width: max-content; text-wrap:initial;">
                             <i class="fas fa-user me-2"></i> Profile
                         </a>
                         <a class="dropdown-item logout" (click)="logout()">

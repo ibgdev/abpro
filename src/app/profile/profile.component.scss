@@ -1,0 +1,162 @@
+$drkany-bleu: #112030;
+$bouba-vert: #52a5a3;
+$gris-clair: #c1caca;
+
+.account-settings {
+    width: 50%;
+    max-width: 600px;
+    background: $drkany-bleu;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    color: $gris-clair;
+
+    .back-button {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+
+        .back-btn {
+            text-decoration: none;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: 5px;
+            background-color: $gris-clair;
+            color: $drkany-bleu;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: darken($gris-clair, 10%);
+            }
+        }
+    }
+
+    .user-profile {
+        text-align: center;
+        margin-bottom: 20px;
+        padding-top: 40px;
+
+        .user-avatar img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid $bouba-vert;
+        }
+
+        h4.user-name {
+            margin-top: 15px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: $bouba-vert;
+        }
+
+        h6.user-email {
+            margin-top: 8px;
+            font-size: 1rem;
+            color: lighten($gris-clair, 10%);
+        }
+    }
+
+    .about {
+        margin-top: 20px;
+        text-align: center;
+
+        h5 {
+            font-size: 1.3rem;
+            color: $bouba-vert;
+        }
+
+        p {
+            font-size: 1rem;
+            color: $gris-clair;
+            line-height: 1.5;
+        }
+    }
+
+    .details {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: lighten($drkany-bleu, 5%);
+        border-radius: 10px;
+
+        h5 {
+            font-size: 1.2rem;
+            color: $bouba-vert;
+            margin-bottom: 10px;
+            border-bottom: 1px solid $gris-clair;
+            padding-bottom: 5px;
+        }
+
+        .details-list {
+            list-style: none;
+            padding: 0;
+            font-size: 1rem;
+            color: $gris-clair;
+
+            li {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    .edit-password {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: lighten($drkany-bleu, 5%);
+        border-radius: 10px;
+
+        h5 {
+            font-size: 1.2rem;
+            color: $bouba-vert;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+
+            label {
+                display: block;
+                font-size: 0.9rem;
+                color: lighten($gris-clair, 10%);
+                margin-bottom: 5px;
+            }
+
+            input {
+                width: 100%;
+                padding: 10px;
+                font-size: 0.9rem;
+                border: 1px solid $gris-clair;
+                border-radius: 5px;
+                background-color: lighten($drkany-bleu, 10%);
+                color: $gris-clair;
+            }
+
+            input:focus {
+                outline: none;
+                border-color: $bouba-vert;
+            }
+            input::placeholder{
+                color: darken($gris-clair, $amount: 30%);
+            }
+        }
+
+        .save-password-btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: $bouba-vert;
+            color: $drkany-bleu;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: darken($bouba-vert, 10%);
+            }
+        }
+    }
+}

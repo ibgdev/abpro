@@ -9,9 +9,10 @@ import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ManAccountsComponent } from './admin/man-accounts/man-accounts.component';
 import { ManPresencesComponent } from './admin/man-presences/man-presences.component';
-import { ManAbsencesComponent } from './admin/man-absences/man-absences.component';
 import { HistoryComponent } from './admin/history/history.component';
 import { ManDepartmentsComponent } from './admin/man-departments/man-departments.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ManRequestsComponent } from './admin/man-requests/man-requests.component';
 
 export const routes: Routes = [
     {path:'login', component: LoginComponent},
@@ -27,12 +28,13 @@ export const routes: Routes = [
             {path:'dashboard', component: DashboardComponent},
             {path:'gestion-comptes', component: ManAccountsComponent},
             {path:'gestion-presences', component: ManPresencesComponent},
-            {path:'gestion-absences', component: ManAbsencesComponent},
             {path:'gestion-departements', component: ManDepartmentsComponent},
+            {path:'gestion-demandes', component: ManRequestsComponent},
             {path:'history', component: HistoryComponent},
             {path:'', redirectTo:'dashboard', pathMatch:'full'},
         ]
     },
+    {path:'profile', component:ProfileComponent},
     {path:'register', component:RegisterComponent},
     {path:'pagenotfound', component: PageNotFoundComponent},
     {path:'', redirectTo:'/login', pathMatch:'full'},
