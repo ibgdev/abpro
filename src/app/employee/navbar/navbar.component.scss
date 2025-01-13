@@ -1,7 +1,43 @@
-.navbar-link:active{
-    color: #112030;
+.navbar {
+    background-color: #52a5a3 !important;
 }
 
-.logout:hover{
+.navbar .nav-link {
+    color: white !important;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    color: #d9f2f1 !important;
+}
+.navbar .nav-link.active{
+    border-radius: 10px;
+    border-bottom: #ffffff solid ;
+}
+.navbar .navbar-text {
+    color: white !important;
+}
+
+.navbar-toggler-icon {
+    background-color: #ffffff;
+}
+
+.navbar .dropdown-menu {
+    background-color: #52a5a3;
+    border: none;
+}
+
+.navbar .dropdown-menu .dropdown-item {
+    color: white !important;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+    background-color: #d9f2f1 !important;
+    color: #112030 !important;
+}
+
+.logout:hover {
     cursor: pointer;
+    color: #d9f2f1 !important;
 }

@@ -1,0 +1,184 @@
+$primary-bg: #f9fafb;
+$card-bg: #f4f4f4; /* Paper-like color */
+$primary-color: #52a5a3;
+$text-color: #333;
+$pending-color: #f9a825;
+$approved-color: #43a047;
+$rejected-color: #e53935;
+$border-color: #ddd;
+
+.demandes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: $primary-bg;
+
+    .mini-navbar {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
+
+        .nav-btn {
+            padding: 8px 16px;
+            background-color: $primary-color;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &.active {
+                background-color: darken($primary-color, 10%);
+            }
+
+            &:hover {
+                background-color: darken($primary-color, 15%);
+            }
+        }
+    }
+
+    .card {
+        background-color: $card-bg;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 100%;
+        max-width: 100%;
+        border: 1px solid $border-color; /* Border to resemble paper edge */
+
+        /* Adding subtle paper texture */
+        background-image: linear-gradient(to bottom right, #f4f4f4 50%, #ffffff 50%);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+
+        h2 {
+            color: $text-color;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .form-group-type {
+            margin-bottom: 15px; /* Reduced space between form groups */
+
+            label {
+                font-weight: bold;
+                color: $text-color;
+                display: block;
+                margin-bottom: 8px; /* Reduced margin between label and input */
+            }
+
+            select,
+            input,
+            textarea {
+                padding: 6px 12px; /* Reduced padding */
+                font-size: 0.9rem; /* Smaller font size */
+                border-radius: 5px;
+                border: 1px solid $primary-color;
+                color: $text-color;
+                background-color: #f1f1f1;
+                width: 100%; /* Ensure inputs are still full width */
+            }
+
+            select {
+                width: auto; /* Keeps select field from stretching too wide */
+            }
+
+            input[type="date"] {
+                width: 10%;
+                display: inline-block;
+                padding: 5px 10px; /* Reduced padding */
+            }
+
+            input[type="text"] {
+                display: inline-block;
+                width: 30%;
+                padding: 5px 10px; /* Reduced padding */
+            }
+
+        }
+
+
+    }
+
+    .filter-container {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .filter-label {
+            color: $text-color;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .filter-select {
+            padding: 6px 12px; /* Reduced padding for the filter select */
+            border-radius: 5px;
+            border: 1px solid $primary-color;
+            width: 180px; /* Slightly smaller width */
+        }
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .table-title {
+        margin-bottom: 20px;
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: $text-color;
+        }
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f1f1f1;
+            font-weight: bold;
+        }
+
+        td {
+            color: $text-color;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+    }
+
+    .pending {
+        color: $pending-color;
+    }
+
+    .approved {
+        color: $approved-color;
+    }
+
+    .rejected {
+        color: $rejected-color;
+    }
+
+    .demande{
+        border: #333 solid 1px;
+        padding: 20px;
+        border-radius: 10px;
+    }
+}

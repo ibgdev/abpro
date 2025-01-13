@@ -1,3 +1,4 @@
+import { RequestsComponent } from './employee/requests/requests.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
@@ -20,6 +21,7 @@ export const routes: Routes = [
         children :[
             {path:'presence', component: PresenceComponent},
             {path:'historique', component: HistoriqueComponent},
+            {path:'demandes', component: RequestsComponent},
             {path:'', redirectTo:'presence', pathMatch:'full'},
         ]
     },

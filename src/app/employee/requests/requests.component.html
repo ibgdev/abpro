@@ -1,0 +1,83 @@
+<div class="demandes-container">
+    <!-- Mini Navbar -->
+    <div class="mini-navbar">
+        <button class="nav-btn active" (click)="viewSection = 'newDemande'">Nouvelle Demande</button>
+        <button class="nav-btn" (click)="viewSection = 'viewDemandes'">Mes Demandes</button>
+    </div>
+
+    <!-- Add New Demande Section -->
+    <div class="card shadow" *ngIf="viewSection === 'newDemande'">
+        <h2>Nouvelle Demande</h2>
+        <form (submit)="sendDemande()">
+            <div class="form-group-type">
+                <label for="demandeType">Type de Demande</label>
+                <select id="demandeType" [(ngModel)]="newDemande" name="type" required>
+                    <option value="" disabled selected>Choisir un type de demande</option>
+                    @for (type of TypeDemade; track $index) {
+                    <option [value]="type">{{type}}</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+
+                <!-- demande de congé -->
+                @switch (newDemande) {
+                @case ('Congé') {
+                <div class="demande shadow m-4">
+                    <app-conge (congeData)="handleCongeData($event)"></app-conge>
+                </div>
+                }
+                @case ('Matériel'){
+                <div class="demande shadow m-4">
+                    <app-materiel (materielData)="handleMaterielData($event)"></app-materiel>
+                </div>
+                }
+                @case ('Avance'){
+                <div class="demande shadow m-4">
+                    <app-avance (avanceData)="handleAvancelData($event)"></app-avance>
+                </div>
+                }
+                }
+
+            </div>
+        </form>
+    </div>
+
+    <!-- View Demandes Section -->
+    <div class="card shadow" *ngIf="viewSection === 'viewDemandes'">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <h2>Mes <b>Demandes</b></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-container">
+                    <label for="demandeFilter" class="filter-label">Filtrer par type de demande</label>
+                    <select id="demandeFilter" class="filter-select">
+                        <option value="">Tous</option>
+                        <option value="Congé">Congé</option>
+                        <option value="Retard">Retard</option>
+                        <option value="Absence Justifiée">Absence Justifiée</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Type</th>
+                            <th>Détails</th>
+                            <th>Date</th>
+                            <th>Statut</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="demande-materiel">
+    <h2>Demande de Matériel</h2>
+    <form #demandeForm="ngForm" (ngSubmit)="sendDemandeMateriel()" novalidate>
+        <p>Madame, Monsieur,</p>
+        <p>Je souhaiterais obtenir le matériel suivant :
+            <input type="text" [(ngModel)]="materiel" name="materiel" placeholder="Nom du matériel" required #materielInput="ngModel">
+        </p>
+        <p>Pour une utilisation dans le cadre de <input type="text" name="raison" [(ngModel)]="raison" placeholder="raison brève" required #raisonInput="ngModel"></p>
+        <p>Je vous remercie de bien vouloir prendre en compte ma demande.</p>
+        <div class="form-footer">
+            <p>Cordialement,</p>
+            <p>{{user.name}}</p>
+        </div>
+
+        <button type="submit" class="btn btn-submit" [disabled]="!demandeForm.valid">Envoyer</button>
+    </form>
+</div>

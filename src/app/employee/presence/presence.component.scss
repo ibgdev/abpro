@@ -1,6 +1,19 @@
+// Define color variables
+$primary-bg-color: #52a5a3; /* Main container background color */
+$secondary-bg-color: whitesmoke; /* Card background color */
+$text-color: #333; /* Heading and default text color */
+$paragraph-color: #555; /* Paragraph text color */
+$btn-hover-warning: #e0a800; /* Hover color for warning button */
+$btn-hover-danger: #c82333; /* Hover color for danger button */
+$border-color: black; /* Border color */
+
+// Styles
+.container {
+    padding-top: 30px;
+}
 
 .row.mt-5 {
-    background-color: whitesmoke;
+    background-color: $secondary-bg-color;
     border-radius: 10px;
 }
 
@@ -10,13 +23,14 @@
 
 h2 {
     font-size: 1.5rem;
-    color: #333;
+    color: $text-color;
     margin-bottom: 15px;
 }
 
 p {
-    color: #555;
+    color: $paragraph-color;
     font-size: 1rem;
+    text-align: justify;
 }
 
 .btn {
@@ -28,11 +42,11 @@ p {
 }
 
 .btn-warning:hover {
-    background-color: #e0a800;
+    background-color: $btn-hover-warning;
 }
 
 .btn-danger:hover {
-    background-color: #c82333;
+    background-color: $btn-hover-danger;
 }
 
 .btn-hover {
@@ -43,9 +57,11 @@ p {
     transform: translateY(-2px);
 }
 
-.container {
-    padding-top: 30px;
+.row.mt-5.border {
+    border: 2px solid $border-color;
+    background-color: $secondary-bg-color;
 }
+
 
 @media (max-width: 767px) {
     .col-12 {

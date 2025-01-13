@@ -1,0 +1,17 @@
+<div class="demande-avance">
+    <h2>Demande d'Avance</h2>
+    <form #demandeForm="ngForm" (ngSubmit)="sendDemandeAvance()" novalidate>
+        <p>Madame, Monsieur,</p>
+        <p>Je souhaiterais demander une avance de 
+            <input type="number" [(ngModel)]="montantAvance" name="montantAvance" placeholder="Montant de l'avance" required #montantAvanceInput="ngModel">
+        </p>
+        <p>Pour <input type="text" name="raison" [(ngModel)]="raison" placeholder="raison de l'avance" required #raisonAvanceInput="ngModel"></p>
+        <p>Je vous remercie de bien vouloir prendre en compte ma demande.</p>
+        <div class="form-footer">
+            <p>Cordialement,</p>
+            <p>{{user.name}}</p>
+        </div>
+
+        <button type="submit" class="btn btn-submit" [disabled]="!demandeForm.valid">Envoyer</button>
+    </form>
+</div>

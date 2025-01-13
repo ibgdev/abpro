@@ -1,0 +1,45 @@
+$primary-bg: #f9fafb;
+$card-bg: #f4f4f4;
+$primary-color: #52a5a3;
+$text-color: #333;
+$border-color: #ddd;
+
+
+input {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    border: 1px solid $primary-color;
+    color: $text-color;
+    background-color: #f1f1f1;
+    width: 100%;
+}
+
+input[type="date"] {
+    width: 15%;
+    display: inline-block;
+    padding: 5px 10px;
+}
+
+input[type="text"] {
+    display: inline-block;
+    width: 30%;
+    padding: 5px 10px;
+}
+
+
+.btn-submit {
+    padding: 8px 16px; /* Smaller button */
+    background-color: $primary-color;
+    color: white;
+    font-size: 1rem; /* Slightly smaller font size */
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: darken($primary-color, 10%);
+    }
+}
