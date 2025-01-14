@@ -1,0 +1,18 @@
+<div class="demande-autre">
+    <h2>Autre Demande</h2>
+    <form #autreDemandeForm="ngForm" (ngSubmit)="sendAutreDemande()" novalidate>
+        <p>Madame, Monsieur,</p>
+        <p>Je souhaiterais soumettre une demande concernant : 
+            <input type="text" [(ngModel)]="objetDemande" name="objetDemande" placeholder="Objet de la demande" required #objetDemandeInput="ngModel">
+        </p>
+        <p>Descriptif de la demande :</p>
+        <textarea [(ngModel)]="descriptionDemande" name="descriptionDemande" placeholder="Détails de la demande" rows="4" required #descriptionDemandeInput="ngModel"></textarea>
+        <p>Je vous remercie de bien vouloir prendre en compte ma demande.</p>
+        <div class="form-footer">
+            <p>Cordialement,</p>
+            <p>{{user.name}}</p>
+        </div>
+
+        <button type="submit" class="btn btn-submit" [disabled]="!autreDemandeForm.valid">Envoyer</button>
+    </form>
+</div>

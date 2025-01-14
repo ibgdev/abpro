@@ -1,7 +1,7 @@
 import {
   CommonModule,
   NgTemplateOutlet
-} from "./chunk-KRWYQSPE.js";
+} from "./chunk-B7HVHSN2.js";
 import {
   ApplicationRef,
   ChangeDetectionStrategy,
@@ -36,7 +36,7 @@ import {
   ɵɵlistener,
   ɵɵproperty,
   ɵɵtemplate
-} from "./chunk-D2KLOSG3.js";
+} from "./chunk-Q7CJSZJZ.js";
 import {
   __async,
   __spreadProps,

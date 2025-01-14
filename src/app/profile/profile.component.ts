@@ -29,6 +29,7 @@ export class ProfileComponent implements OnInit{
     if (!isLoggedin) {
       this.router.navigate(['/login'])
     }
+    this.getDepartments()
   }
   getDepartments() {
     this.DepartmentsService.getDepartments().subscribe(data => {
@@ -38,17 +39,15 @@ export class ProfileComponent implements OnInit{
 
   getDepartmentName() {
     const dep_id = sessionStorage.getItem("department_id");
-    if (dep_id == null) {
+    if (!dep_id) {
       return "Pas de departement";
     }
-    for (let i = 0; i < this.departments.length; i++) {
-      const element = this.departments[i];
-      if (element.id == dep_id) {
-        return element.department_name;
-      }
-    }
-    return "Pas de departement";
+    const department = this.departments.find((d) => d.id === +dep_id);
+    return department ? department.department_name : "Pas de departement";
   }
+  
+  
+
 
   changePassword() {
     // Validate that the new password matches the confirmation password

@@ -1,0 +1,21 @@
+<div class="demande-autorisation">
+    <h2>Demande d'Autorisation de Sortie</h2>
+    <form #autorisationForm="ngForm" (ngSubmit)="sendDemandeAutorisation()" novalidate>
+        <p>Madame, Monsieur,</p>
+        <p>Je souhaiterais demander une autorisation de sortie pour le 
+            <input type="date" [(ngModel)]="dateSortie" name="dateSortie" required #dateSortieInput="ngModel"> 
+            à partir de 
+            <input type="time" [(ngModel)]="heureDebut" name="heureDebut" required #heureDebutInput="ngModel"> 
+            jusqu'à 
+            <input type="time" [(ngModel)]="heureFin" name="heureFin" required #heureFinInput="ngModel">
+        </p>
+        <p>Raison : <input type="text" name="raison" [(ngModel)]="raison" placeholder="Raison de la sortie" required #raisonSortieInput="ngModel"></p>
+        <p>Je vous remercie de bien vouloir prendre en compte ma demande.</p>
+        <div class="form-footer">
+            <p>Cordialement,</p>
+            <p>{{user.name}}</p>
+        </div>
+
+        <button type="submit" class="btn btn-submit" [disabled]="!autorisationForm.valid">Envoyer</button>
+    </form>
+</div>

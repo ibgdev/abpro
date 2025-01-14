@@ -31,9 +31,6 @@ $border-color: #ddd;
             cursor: pointer;
             transition: background-color 0.3s ease;
 
-            &.active {
-                background-color: darken($primary-color, 10%);
-            }
 
             &:hover {
                 background-color: darken($primary-color, 15%);
@@ -63,13 +60,13 @@ $border-color: #ddd;
         }
 
         .form-group-type {
-            margin-bottom: 15px; /* Reduced space between form groups */
+            margin-bottom: 15px; 
 
             label {
                 font-weight: bold;
                 color: $text-color;
-                display: block;
-                margin-bottom: 8px; /* Reduced margin between label and input */
+                margin-right: 8px;
+                margin-bottom: 8px; 
             }
 
             select,
