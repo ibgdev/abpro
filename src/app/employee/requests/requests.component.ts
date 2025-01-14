@@ -15,16 +15,28 @@ import { AutreComponent } from "./autre/autre.component";
   templateUrl: './requests.component.html',
   styleUrl: './requests.component.scss'
 })
-export class RequestsComponent implements OnInit{
+export class RequestsComponent implements OnInit {
   error: any;
-  demandes : any[] = [];
-  filterType: string = ''
-  user = { "id": sessionStorage.getItem("id"),"name": sessionStorage.getItem("name"), "email": sessionStorage.getItem("email") }
+  demandes: any[] = [];
+  filterType: string = '';
+  filterStatus: string = '';
+  filterDate: string = '';
+
+  filteredDemandes: any[] = [];
+  currentPage: number = 1;
+  itemsPerPage: number = 8;
+  totalPages: number = 1;
+
+
+  user = { "id": sessionStorage.getItem("id"), "name": sessionStorage.getItem("name"), "email": sessionStorage.getItem("email") }
   constructor(private RequestService: RequestService) { }
 
   ngOnInit(): void {
-    this.getDemandes()
-    console.log(this.demandes)
+    if (this.user.id) {
+      this.getDemandes();
+    } else {
+      console.error('User ID is not available');
+    }
   }
 
   viewSection: string = 'viewDemandes';
@@ -91,18 +103,52 @@ export class RequestsComponent implements OnInit{
     );
   }
 
-    //Mes Demandes :
-    getDemandes(){
-      this.RequestService.getRequests().subscribe(data => {
-        if (this.filterType) {
-          this.demandes = data.filter((demande: { type: string; }) => demande.type === this.filterType);
-        } else {
-          this.demandes = data; // Show all demandes if no filter is applied
-        }
+  //Mes Demandes :
+  getDemandes() {
+    if (this.user.id) {
+      this.RequestService.getRequests(this.user.id).subscribe(data => {
+        const filteredData = data.filter((demande: { type: string; status: string; created_at: string }) => {
+          const matchesType = this.filterType ? demande.type === this.filterType : true;
+          const matchesStatus = this.filterStatus ? demande.status === this.filterStatus : true;
+
+          // Normalize both dates to YYYY-MM-DD
+          const createdDate = demande.created_at.split(' ')[0]; // Extract date portion
+          console.log(createdDate)
+          const filterDate = this.filterDate ? new Date(this.filterDate).toISOString().split('T')[0] : null;
+          
+          const matchesDate = filterDate ? createdDate === filterDate : true;
+          return matchesType && matchesStatus && matchesDate;
+        });
+
+        // Update demandes and pagination
+        this.demandes = filteredData;
+        this.totalPages = Math.ceil(this.demandes.length / this.itemsPerPage);
+        this.updateFilteredDemandes();
+      }, error => {
+        console.error("Error fetching demandes: ", error);
       });
     }
-    onFilterChange() {
-      this.getDemandes();
+  }
+
+
+  updateFilteredDemandes() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.filteredDemandes = this.demandes.slice(startIndex, endIndex);
+  }
+
+
+  changePage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.updateFilteredDemandes();
     }
+  }
+
+
+  onFilterChange() {
+    this.currentPage = 1;
+    this.getDemandes();
+  }
 }
 

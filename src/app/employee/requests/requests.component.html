@@ -2,7 +2,7 @@
     <!-- Mini Navbar -->
     <div class="mini-navbar">
         <button class="nav-btn " (click)="viewSection = 'newDemande'">Nouvelle Demande</button>
-        <button class="nav-btn" (click)="viewSection = 'viewDemandes'">Mes Demandes</button>
+        <button class="nav-btn" (click)="[viewSection = 'viewDemandes', getDemandes()]">Mes Demandes</button>
     </div>
 
     <!-- Add New Demande Section -->
@@ -20,7 +20,6 @@
             </div>
 
             <div class="form-group">
-                <!-- demande de congé -->
                 @switch (newDemande) {
                 @case ('Congé') {
                 <div class="demande shadow m-4">
@@ -66,12 +65,23 @@
                 </div>
                 <div class="filter-container">
                     <label for="demandeFilter" class="filter-label">Filtrer par type de demande</label>
-                    <select id="demandeFilter" class="filter-select"  [(ngModel)]="filterType" (change)="onFilterChange()">
+                    <select id="demandeFilter" class="filter-select" [(ngModel)]="filterType"
+                        (change)="onFilterChange()">
                         <option value="">Tous</option>
                         @for (type of TypeDemade; track $index) {
                         <option [value]="type">{{type}}</option>
                         }
                     </select>
+                    <label for="statusFilter" class="filter-label">Filtrer par statut</label>
+                    <select id="statusFilter" class="filter-select" [(ngModel)]="filterStatus"
+                        (change)="onFilterChange()">
+                        <option value="">Tous</option>
+                        <option value="accepté">Accepté</option>
+                        <option value="refusé">Refusé</option>
+                        <option value="en attente">En Attente</option>
+                    </select>
+                    <label for="DateFilter" class="filter-label">Filtrer par date</label>
+                    <input type="date" name="DateFilter" id="DateFilter" class="filter-select" [(ngModel)]="filterDate" (change)="onFilterChange()">
                 </div>
                 <table class="table table-striped table-hover">
                     <thead>
@@ -84,28 +94,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let demande of demandes; let i = index">
+                        <tr *ngFor="let demande of filteredDemandes; let i = index">
                             <td>{{ demande.id }}</td>
                             <td>{{ demande.type }}</td>
                             <td>{{ demande.Details }}</td>
                             <td>{{ demande.created_at }}</td>
                             @switch (demande.status) {
-                                @case(demande.status == 'accepté'){
-                                    <td><span class="badge rounded-pill bg-success">{{ demande.status }}</span></td>
-                                }
-                                @case(demande.status == 'refusé'){
-                                    
-                                    <td><span class="badge rounded-pill bg-danger">{{ demande.status }}</span></td>
-                                }
-                                @default {
-                                    <td><span class="badge rounded-pill bg-secondary">{{ demande.status }}</span></td>
-                                }
+                            @case(demande.status == 'accepté'){
+                            <td><span class="badge rounded-pill bg-success">{{ demande.status }}</span></td>
+                            }
+                            @case(demande.status == 'refusé'){
+
+                            <td><span class="badge rounded-pill bg-danger">{{ demande.status }}</span></td>
+                            }
+                            @default {
+                            <td><span class="badge rounded-pill bg-secondary">{{ demande.status }}</span></td>
+                            }
                             }
                         </tr>
                     </tbody>
 
                 </table>
             </div>
+        </div>
+        <div class="pagination-container">
+            <button [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">
+                Précédent
+            </button>
+            <span>Page {{ currentPage }} sur {{ totalPages }}</span>
+            <button [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">
+                Suivant
+            </button>
         </div>
     </div>
 </div>

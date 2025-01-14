@@ -11,8 +11,12 @@ export class RequestService {
   
   constructor(private http: HttpClient) { }
 
-  getRequests(): Observable<any>{
-    return this.http.get<any>(this.apiUrl2);
+  getRequests(userId: string | null): Observable<any> {
+    if (userId) {
+      return this.http.get<any>(`${this.apiUrl2}?id=${userId}`);
+    } else {
+      return this.http.get<any>(this.apiUrl2);
+    }
   }
 
   addRequest(user_id : string, type : string, details : string): Observable<any> {
