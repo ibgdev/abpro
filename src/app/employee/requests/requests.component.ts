@@ -113,7 +113,6 @@ export class RequestsComponent implements OnInit {
 
           // Normalize both dates to YYYY-MM-DD
           const createdDate = demande.created_at.split(' ')[0]; // Extract date portion
-          console.log(createdDate)
           const filterDate = this.filterDate ? new Date(this.filterDate).toISOString().split('T')[0] : null;
           
           const matchesDate = filterDate ? createdDate === filterDate : true;

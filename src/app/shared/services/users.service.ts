@@ -10,9 +10,9 @@ export class UsersService {
   private deleteUrl = "http://localhost:8080/delete-users-api.php";
 
   constructor(private http: HttpClient) {}
-
-  getUsers(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+  getUsers(Depid:string | null): Observable<any> {
+    console.log(Depid)
+    return this.http.get<any>(`${this.apiUrl}?dep_id=${Depid}`);
   }
 
   deleteUser(id: number) {

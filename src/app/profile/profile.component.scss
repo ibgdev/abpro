@@ -1,17 +1,20 @@
-$drkany-bleu: #112030;
-$bouba-vert: #52a5a3;
-$gris-clair: #c1caca;
+$light-blue: #f0fff0;
+$green: #52a5a3;
+$gray-light: #6b6d6d;
+$gray-dark: #5d6063;
+$white: #ffffff;
+$border-color: #e9e9e9;
 
 .account-settings {
     width: 50%;
     max-width: 600px;
-    background: $drkany-bleu;
+    background: $white;
     border-radius: 15px;
     padding: 20px;
     margin-top: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     position: relative;
-    color: $gris-clair;
+    color: $gray-dark;
 
     .back-button {
         position: absolute;
@@ -24,13 +27,13 @@ $gris-clair: #c1caca;
             font-size: 0.9rem;
             border: none;
             border-radius: 5px;
-            background-color: $gris-clair;
-            color: $drkany-bleu;
+            background-color: $gray-light;
+            color: $white;
             cursor: pointer;
             transition: background-color 0.3s ease;
 
             &:hover {
-                background-color: darken($gris-clair, 10%);
+                background-color: darken($gray-light, 10%);
             }
         }
     }
@@ -44,20 +47,20 @@ $gris-clair: #c1caca;
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            border: 4px solid $bouba-vert;
+            border: 4px solid $green;
         }
 
         h4.user-name {
             margin-top: 15px;
             font-size: 1.8rem;
             font-weight: bold;
-            color: $bouba-vert;
+            color: $green;
         }
 
         h6.user-email {
             margin-top: 8px;
             font-size: 1rem;
-            color: lighten($gris-clair, 10%);
+            color: lighten($gray-light, 10%);
         }
     }
 
@@ -67,12 +70,12 @@ $gris-clair: #c1caca;
 
         h5 {
             font-size: 1.3rem;
-            color: $bouba-vert;
+            color: $green;
         }
 
         p {
             font-size: 1rem;
-            color: $gris-clair;
+            color: $gray-dark;
             line-height: 1.5;
         }
     }
@@ -80,14 +83,14 @@ $gris-clair: #c1caca;
     .details {
         margin-top: 20px;
         padding: 15px;
-        background-color: lighten($drkany-bleu, 5%);
+        background-color: lighten($light-blue, 10%);
         border-radius: 10px;
 
         h5 {
             font-size: 1.2rem;
-            color: $bouba-vert;
+            color: $green;
             margin-bottom: 10px;
-            border-bottom: 1px solid $gris-clair;
+            border-bottom: 1px solid $border-color;
             padding-bottom: 5px;
         }
 
@@ -95,7 +98,7 @@ $gris-clair: #c1caca;
             list-style: none;
             padding: 0;
             font-size: 1rem;
-            color: $gris-clair;
+            color: $gray-dark;
 
             li {
                 margin-bottom: 10px;
@@ -106,12 +109,12 @@ $gris-clair: #c1caca;
     .edit-password {
         margin-top: 20px;
         padding: 15px;
-        background-color: lighten($drkany-bleu, 5%);
+        background-color: lighten($light-blue, 10%);
         border-radius: 10px;
 
         h5 {
             font-size: 1.2rem;
-            color: $bouba-vert;
+            color: $green;
             margin-bottom: 15px;
         }
 
@@ -121,7 +124,7 @@ $gris-clair: #c1caca;
             label {
                 display: block;
                 font-size: 0.9rem;
-                color: lighten($gris-clair, 10%);
+                color: lighten($gray-light, 10%);
                 margin-bottom: 5px;
             }
 
@@ -129,33 +132,34 @@ $gris-clair: #c1caca;
                 width: 100%;
                 padding: 10px;
                 font-size: 0.9rem;
-                border: 1px solid $gris-clair;
+                border: 1px solid $border-color;
                 border-radius: 5px;
-                background-color: lighten($drkany-bleu, 10%);
-                color: $gris-clair;
+                background-color: lighten($light-blue, 15%);
+                color: $gray-dark;
             }
 
             input:focus {
                 outline: none;
-                border-color: $bouba-vert;
+                border-color: $green;
             }
-            input::placeholder{
-                color: darken($gris-clair, $amount: 30%);
+
+            input::placeholder {
+                color: darken($gray-light, 20%);
             }
         }
 
         .save-password-btn {
             padding: 10px 20px;
             font-size: 1rem;
-            background-color: $bouba-vert;
-            color: $drkany-bleu;
+            background-color: $green;
+            color: $white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
 
             &:hover {
-                background-color: darken($bouba-vert, 10%);
+                background-color: darken($green, 10%);
             }
         }
     }

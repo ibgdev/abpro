@@ -40,7 +40,7 @@ export class ManAccountsComponent implements OnInit {
 
   // Get users
   getUsers() {
-    this.usersService.getUsers().subscribe(data => {
+    this.usersService.getUsers(sessionStorage.getItem("department_id")).subscribe(data => {
       this.users = data
     })
   }
