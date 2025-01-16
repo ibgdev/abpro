@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RequestService {
-  private apiUrl = "http://localhost:8080/request-add-api.php";
-  private apiUrl2 = "http://localhost:8080/request-api.php";
+  private apiUrl = "http://localhost:8080/request/request-add-api.php";
+  private apiUrl2 = "http://localhost:8080/request/request-api.php";
   
   constructor(private http: HttpClient) { }
 

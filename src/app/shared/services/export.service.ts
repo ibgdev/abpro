@@ -10,7 +10,7 @@ export class ExportService {
 
   exportToExcel(){
     return this.http.get(this.apiUrl, {
-      responseType: 'blob' // treate as a file
+      responseType: 'blob' 
     });
   }
 }

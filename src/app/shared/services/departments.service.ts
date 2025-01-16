@@ -6,8 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class DepartmentsService {
 
-  private apiUrl = "http://localhost:8080/departments-api.php"
-  private deleteUrl = "http://localhost:8080/delDepartment-Api.php"
+  private apiUrl = "http://localhost:8080/departments/departments-api.php"
+  private deleteUrl = "http://localhost:8080/departments/delDepartment-Api.php"
   constructor(private http: HttpClient) { }
 
   getDepartments(){

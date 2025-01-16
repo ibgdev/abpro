@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsersService {
-  private apiUrl = "http://localhost:8080/get-users-api.php";
-  private deleteUrl = "http://localhost:8080/delete-users-api.php";
+  private apiUrl = "http://localhost:8080/user/get-users-api.php";
+  private deleteUrl = "http://localhost:8080/user/delete-users-api.php";
 
   constructor(private http: HttpClient) {}
   getUsers(Depid:string | null): Observable<any> {

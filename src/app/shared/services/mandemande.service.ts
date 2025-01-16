@@ -8,7 +8,7 @@
   export class MandemandeService {
 
     constructor(private http : HttpClient) { }
-    private apiUrl2 = "http://localhost:8080/Dep-request-api.php"
+    private apiUrl2 = "http://localhost:8080/request/Dep-request-api.php"
 
     getRequests(depId: string | null): Observable<any> {
       if (depId) {

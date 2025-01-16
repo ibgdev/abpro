@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class RegisterService {
-  private apiUrl = "http://localhost:8080/register-api.php";
+  private apiUrl = "http://localhost:8080/user/register-api.php";
   
   constructor(private http: HttpClient) { }
 
