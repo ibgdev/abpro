@@ -81,7 +81,8 @@
                         <option value="en attente">En Attente</option>
                     </select>
                     <label for="DateFilter" class="filter-label">Filtrer par date</label>
-                    <input type="date" name="DateFilter" id="DateFilter" class="filter-select" [(ngModel)]="filterDate" (change)="onFilterChange()">
+                    <input type="date" name="DateFilter" id="DateFilter" class="filter-select" [(ngModel)]="filterDate"
+                        (change)="onFilterChange()">
                 </div>
                 <table class="table table-striped table-hover">
                     <thead>
@@ -99,18 +100,12 @@
                             <td>{{ demande.type }}</td>
                             <td>{{ demande.Details }}</td>
                             <td>{{ demande.created_at }}</td>
-                            @switch (demande.status) {
-                            @case(demande.status == 'accepté'){
-                            <td><span class="badge rounded-pill bg-success">{{ demande.status }}</span></td>
-                            }
-                            @case(demande.status == 'refusé'){
-
-                            <td><span class="badge rounded-pill bg-danger">{{ demande.status }}</span></td>
-                            }
-                            @default {
-                            <td><span class="badge rounded-pill bg-secondary">{{ demande.status }}</span></td>
-                            }
-                            }
+                            <td>
+                                <span
+                                    [class]="'badge rounded-pill ' + (demande.status === 'accepté' ? 'bg-success' : demande.status === 'refusé' ? 'bg-danger' : 'bg-secondary')">
+                                    {{ demande.status }}
+                                </span>
+                            </td>
                         </tr>
                     </tbody>
 

@@ -17,4 +17,8 @@
         return this.http.get<any>(this.apiUrl2);
       }
     }
+
+    updateRequestStatus(id : string, stat : string, admin_id : string | null){
+      return this.http.post(`${this.apiUrl2}`,{id,stat,admin_id})
+    }
   }

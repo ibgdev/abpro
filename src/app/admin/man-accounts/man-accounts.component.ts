@@ -19,6 +19,7 @@ export class ManAccountsComponent implements OnInit {
   users: any[] = [];
   departments: any[] = [];
   error: { [key: string]: string } = {}
+  isSuperAdmin = sessionStorage.getItem('id') == '0'
 
   full_name: string = '';
   email: string = '';

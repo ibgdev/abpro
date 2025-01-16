@@ -59,7 +59,6 @@ export class ManRequestsComponent implements OnInit {
     const DepId = sessionStorage.getItem("department_id") == 'null' ?   null :sessionStorage.getItem("department_id")
     this.MandemandeService.getRequests(DepId).subscribe((data) => {
         this.demandes = data;
-        console.log(data)
         this.filteredDemandes = [...this.demandes];
         this.demandTypes = Array.from(new Set(this.demandes.map(d => d.type)));
     });
@@ -78,22 +77,24 @@ export class ManRequestsComponent implements OnInit {
   }
 
   acceptDemande(id: string) {
-    // this.demandeService.updateDemandeStatus(id, 'accepté').subscribe(() => {
-    //   const demande = this.demandes.find(d => d.id === id);
-    //   if (demande) {
-    //     demande.status = 'accepté';
-    //     this.applyFilters();
-    //   }
-    // });
+    this.MandemandeService.updateRequestStatus(id, 'accepté', sessionStorage.getItem('id')).subscribe(
+      () => {
+        this.fetchDemandes();
+      },
+      error => {
+        console.error('Error accepting demande:', error);
+      }
+    );
   }
 
   rejectDemande(id: string) {
-    // this.demandeService.updateDemandeStatus(id, 'refusé').subscribe(() => {
-    //   const demande = this.demandes.find(d => d.id === id);
-    //   if (demande) {
-    //     demande.status = 'refusé';
-    //     this.applyFilters();
-    //   }
-    // });
+    this.MandemandeService.updateRequestStatus(id, 'refuse', sessionStorage.getItem('id')).subscribe(
+      () => {
+        this.fetchDemandes();
+      },
+      error => {
+        console.error('Error rejecting demande:', error);
+      }
+    );
   }
 }

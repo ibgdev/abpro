@@ -15,6 +15,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     
   }
+  isSuperAdmin = sessionStorage.getItem('id') == '0';
   logout(): void {
     sessionStorage.clear();
     this.router.navigate(['/login']);
