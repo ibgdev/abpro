@@ -13,17 +13,16 @@ import { SharedModule } from '../shared/shared.module';
 export class CalendarComponent implements OnInit {
   weekDays = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
   calendar: { date: string; isCurrentMonth: boolean; status: string }[][] = [];
-  attendanceData: { date: string; status: string }[] = []; // Attendance data from the database
+  attendanceData: { date: string; status: string }[] = [];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.fetchAttendanceData(); // Fetch attendance data
+    this.fetchAttendanceData(); 
   }
 
   fetchAttendanceData() {
-    // Replace with your API endpoint to fetch attendance data
-    this.http.get<{ date: string; status: string }[]>('http://localhost:8080/presence/getPresences.php').subscribe(
+    this.http.get<{ date: string; status: string }[]>('http://localhost:8080/presence/getPresences.php?id='+sessionStorage.getItem('id')).subscribe(
       (data) => {
         this.attendanceData = data; // Store attendance data
         this.calendar = this.getCalendarForCurrentMonth();
@@ -54,10 +53,10 @@ export class CalendarComponent implements OnInit {
     }
 
     // Add days of the current month
-    for (let day = 1; day <= daysInMonth; day++) {
+    for (let day = 2; day <= daysInMonth+1; day++) {
       const date = new Date(year, month, day).toISOString().split('T')[0];
       const attendanceEntry = this.attendanceData.find((entry) => entry.date === date);
-      const status = attendanceEntry ? attendanceEntry.status || 'unknown' : 'unknown'; // Set to 'unknown' if empty
+      const status = attendanceEntry ? attendanceEntry.status || '' : ''; 
       week.push({ date, isCurrentMonth: true, status });
 
       if (week.length === 7) {

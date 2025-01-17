@@ -8,11 +8,10 @@
     <div class="dates">
         <div *ngFor="let week of calendar" class="week">
             <div *ngFor="let day of week" [ngClass]="{ 'current-month': day.isCurrentMonth }" class="date">
-                <span *ngIf="day.date">{{ day.date.split('-')[2] }}</span>
+                <span *ngIf="day.date" class="date_number">{{ day.date.split('-')[2] }}</span>
                 <span *ngIf="day.status" class="badge" [ngClass]="{
                     'bg-success': day.status === 'present',
                     'bg-danger': day.status === 'absent',
-                    'bg-secondary': day.status === 'unknown'
                   }">
                   {{ day.status }}
                 </span>

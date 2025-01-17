@@ -31,7 +31,7 @@ export class PresenceComponent implements OnInit {
     
     setTimeout(() => {
       this.showContent = true;
-    }, 1000); // 2 seconds
+    }, 1000); 
   }
   updateTime(): void {
     this.currentTime = new Date();
@@ -42,7 +42,7 @@ export class PresenceComponent implements OnInit {
     const hour = this.currentTime.getHours();
     
     // Arrival can be marked between 8:00 AM and 10:00 AM
-    this.isArrivalDisabled = hour < 8 || hour >= 13 || this.hasArrivedFlag;
+    this.isArrivalDisabled = hour < 8 || hour >= 10 || this.hasArrivedFlag;
     
     // Departure can be marked between 8:00 AM and 5:00 PM
     this.isDepartureDisabled = hour < 8 || hour >= 17 || !this.hasArrivedFlag || this.hasdepartedFlag;
