@@ -1,14 +1,21 @@
 <div class="calendar">
-    <!-- Weeks -->
+    <!-- Weekdays -->
     <div class="weekdays">
         <div *ngFor="let day of weekDays">{{ day }}</div>
     </div>
 
-    <!-- dates -->
+    <!-- Dates -->
     <div class="dates">
         <div *ngFor="let week of calendar" class="week">
             <div *ngFor="let day of week" [ngClass]="{ 'current-month': day.isCurrentMonth }" class="date">
-                {{ day.date ? day.date.split('-')[2] : '' }}
+                <span *ngIf="day.date">{{ day.date.split('-')[2] }}</span>
+                <span *ngIf="day.status" class="badge" [ngClass]="{
+                    'bg-success': day.status === 'present',
+                    'bg-danger': day.status === 'absent',
+                    'bg-secondary': day.status === 'unknown'
+                  }">
+                  {{ day.status }}
+                </span>
             </div>
         </div>
     </div>
