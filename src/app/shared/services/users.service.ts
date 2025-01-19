@@ -11,7 +11,6 @@ export class UsersService {
 
   constructor(private http: HttpClient) {}
   getUsers(Depid:string | null): Observable<any> {
-    console.log(Depid)
     return this.http.get<any>(`${this.apiUrl}?dep_id=${Depid}`);
   }
 

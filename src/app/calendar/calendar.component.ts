@@ -24,7 +24,7 @@ export class CalendarComponent implements OnInit {
   fetchAttendanceData() {
     this.http.get<{ date: string; status: string }[]>('http://localhost:8080/presence/getPresences.php?id='+sessionStorage.getItem('id')).subscribe(
       (data) => {
-        this.attendanceData = data; // Store attendance data
+        this.attendanceData = data;
         this.calendar = this.getCalendarForCurrentMonth();
       },
       (error) => {
