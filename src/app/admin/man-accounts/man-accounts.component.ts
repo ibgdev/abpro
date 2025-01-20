@@ -20,14 +20,14 @@ export class ManAccountsComponent implements OnInit {
   departments: any[] = [];
   error: { [key: string]: string } = {}
   isSuperAdmin = sessionStorage.getItem('id') == '0'
-
+  addUser : boolean = true;
   full_name: string = '';
   email: string = '';
   password: string = '';
   department: string = '';
   role: string = 'employee';
   searchTerm: string = '';
-  working:string ='';
+  working: string = '';
 
   constructor(private usersService: UsersService,
     private DepartmentsService: DepartmentsService,
@@ -46,8 +46,9 @@ export class ManAccountsComponent implements OnInit {
     })
   }
 
-  workingedit(msg : string){
+  workingedit(msg: string, edit : boolean) {
     this.working = msg;
+    this.addUser = edit;
   }
   //filtred users
 
@@ -99,6 +100,52 @@ export class ManAccountsComponent implements OnInit {
               icon: 'success',
               confirmButtonText: 'Confirmer',
             }).then(() => {
+              this.addUser = false;
+              this.getUsers();
+            });
+          } else {
+            this.error["registerError"] = response.message || 'Registration failed.';
+            Swal.fire({
+              title: 'erreur!',
+              text: response.message,
+              icon: 'error',
+              confirmButtonText: 'Confirmer',
+            })
+          }
+        },
+        (error) => {
+          this.error["registerError"] = error.error?.message || 'An error occurred.';
+        }
+
+      )
+
+      this.resetForm();
+      const closeModalButton = document.querySelector('.btn-close') as HTMLElement;
+      closeModalButton?.click();
+    }
+  }
+
+  updateAccount(){
+    if (this.full_name && this.email && this.password && this.department) {
+      const data = {
+        fullname: this.full_name,
+        email: this.email,
+        password: this.password,
+        department: this.department,
+        role: this.role
+      };
+
+
+      this.RegisterService.updateUser(data.fullname, data.email, data.password, data.department, data.role).subscribe(
+        (response) => {
+          if (response.success) {
+            Swal.fire({
+              title: 'Succès!',
+              text: response.message,
+              icon: 'success',
+              confirmButtonText: 'Confirmer',
+            }).then(() => {
+              this.addUser = false;
               this.getUsers();
             });
           } else {
@@ -155,7 +202,7 @@ export class ManAccountsComponent implements OnInit {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Confirmer',
-      cancelButtonText: 'Annuler',  
+      cancelButtonText: 'Annuler',
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
@@ -166,7 +213,8 @@ export class ManAccountsComponent implements OnInit {
               Swal.fire({
                 text: 'Utilisateur supprimé avec succès ?',
                 icon: 'success',
-                confirmButtonText: 'Okey',})
+                confirmButtonText: 'Okey',
+              })
             } else {
               this.error["LoginError"] = response.message || 'Invalid credentials.';
             }

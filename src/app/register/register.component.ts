@@ -49,17 +49,25 @@ export class RegisterComponent implements OnInit {
         if (response.success) {
           Swal.fire({
             title: 'Succès!',
-            text: 'Vous avez crée un compte avec succès.',
+            text: response.message,
             icon: 'success',
             confirmButtonText: 'Confirmer',
           })
           this.router.navigate(['/login']);
         } else {
           this.error["registerError"] = response.message || 'Registration failed.';
+          Swal.fire({
+            title: 'Erreur!',
+            text: response.message,
+            icon: 'error',
+            confirmButtonText: 'Confirmer',
+          }
+          );
         }
       },
       (error) => {
         this.error["registerError"] = error.error?.message || 'An error occurred.';
+        
       }
     );
   }

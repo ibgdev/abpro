@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-xs-7" *ngIf="isSuperAdmin">
                     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddUser"
-                        (click)="workingedit('Ajouter Nouveau Utilisateur')" >
+                        (click)="workingedit('Ajouter Nouveau Utilisateur',false)" >
                         <i class="material-icons">&#xE147; </i> <span>Nouveau Utilisateur</span>
                     </a>
                     <button class="btn btn-primary" (click)="exportData()" >
@@ -47,7 +47,7 @@
                     <td>{{user.created_at}}</td> <!-- Creation Date-->
                     <td>{{user.role}}</td> <!-- Role -->
                     <td> <!-- Action -->
-                        <a (click)="[settings(user.id, user.full_name ,user.email, user.password, user.department_id, user.role),workingedit('Mise a jour  d\'Utilisateur')]"
+                        <a (click)="[settings(user.id, user.full_name ,user.email, user.password, user.department_id, user.role),workingedit('Mise a jour  d\'Utilisateur', true)]"
                             data-bs-toggle="modal" data-bs-target="#AddUser" class="settings cursor" title="Settings"
                             data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
                         <a (click)="deleteEmployee(user.id)" class="delete cursor" title="Delete"
@@ -134,9 +134,10 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                 <!-- Submit Button -->
-                <button class="btn btn-primary" [disabled]="addUserForm.invalid" (click)="addAccount()">Enregistrer
+                <button class="btn btn-primary" [disabled]="addUserForm.invalid" [hidden]="addUser" (click)="addAccount()">Enregistrer
                     Utilisateur</button>
-
+                <button class="btn btn-primary" [disabled]="addUserForm.invalid" [hidden]="!addUser" (click)="updateAccount()">Mise à jour
+                    Utilisateur</button>
             </div>
         </div>
     </div>
