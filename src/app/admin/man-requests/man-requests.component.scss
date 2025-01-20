@@ -41,7 +41,8 @@ table.table {
     background: $secondary-color;
     box-shadow: 0 1px 3px $shadow-color;
 
-    th, td {
+    th,
+    td {
         padding: 12px 15px;
         text-align: left;
         border-bottom: 1px solid $border-color;
@@ -107,6 +108,60 @@ table.table {
     .btn-sm {
         font-size: 12px;
         padding: 5px 10px;
+    }
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.page-item {
+    margin: 0 5px;
+}
+
+.page-link {
+    display: block;
+    padding: 8px 15px;
+    font-size: 14px;
+    color: $text-color;
+    background-color: $secondary-color;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $button-hover;
+        border-color: $primary-color;
+    }
+}
+
+.page-item.active .page-link {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: $secondary-color;
+}
+
+.page-item.disabled .page-link {
+    color: $text-color;
+    background-color: $secondary-color;
+    border-color: $border-color;
+    pointer-events: none;
+}
+
+// Responsive Styles
+@media (max-width: 768px) {
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .page-item {
+        margin: 5px;
     }
 }
 

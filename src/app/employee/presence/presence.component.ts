@@ -42,7 +42,7 @@ export class PresenceComponent implements OnInit {
     const hour = this.currentTime.getHours();
     
     // Arrival can be marked between 8:00 AM and 10:00 AM
-    this.isArrivalDisabled = hour < 8 || hour >= 16 || this.hasArrivedFlag;
+    this.isArrivalDisabled = hour < 8 || hour >= 10 || this.hasArrivedFlag;
     
     // Departure can be marked between 8:00 AM and 5:00 PM
     this.isDepartureDisabled = hour < 8 || hour >= 17 || !this.hasArrivedFlag || this.hasdepartedFlag;

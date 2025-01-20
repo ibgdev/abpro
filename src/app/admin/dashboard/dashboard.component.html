@@ -1,1 +1,51 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+    <!-- Header -->
+    <header>
+        <h1>Tableau de bord Admin</h1>
+    </header>
+
+    <!-- Total des employés -->
+    <section class="total-employees">
+        <div class="counter">
+            <h2>Total des employés : {{ totalEmployees }}</h2>
+        </div>
+    </section>
+
+    <!-- Cartes des départements -->
+    <section class="department-cards">
+        <div class="card" *ngFor="let department of departments; let i = index"
+            [ngStyle]="{'background-color': colors[i % colors.length]}">
+            <h3>{{ department.name }}</h3>
+            <p>Employés : {{ getEmpNumDep(department.id) }}</p>
+        </div>
+    </section>
+
+    <!-- Résumé des demandes -->
+    <section class="requests-summary">
+        <div class="summary-card">
+            <h3>Demandes acceptées</h3>
+            <p>{{ acceptedRequests }}</p>
+        </div>
+        <div class="summary-card">
+            <h3>Demandes refusées</h3>
+            <p>{{ refusedRequests }}</p>
+        </div>
+        <div class="summary-card">
+            <h3>Demandes en attente</h3>
+            <p>{{ pendingRequests }}</p>
+        </div>
+    </section>
+
+    <!-- Graphiques de présence -->
+    <section class="graphs">
+        <!-- Graphique des présences -->
+        <div class="graph-card">
+            <h3>Présences d'aujourd'hui</h3>
+        </div>
+
+        <!-- Graphique des absences -->
+        <div class="graph-card">
+            <h3>Absences d'aujourd'hui</h3>
+        </div>
+    </section>
+</div>

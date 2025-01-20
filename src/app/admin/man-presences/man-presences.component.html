@@ -1,40 +1,40 @@
-<div class="container-fluid">
-    <!-- Title and Export Button -->
-    <div class="export">
-        <h2>Gestion des <b>Présences</b></h2>
-        <button class="btn btn-primary"><i class="material-icons">&#xE24D;</i>Exporter en Excel</button>
-    </div>
+    <div class="container-fluid">
+        <!-- Title and Export Button -->
+        <div class="export">
+            <h2>Gestion des <b>Présences</b></h2>
+            <button class="btn btn-primary" (click)="exportToExcel()">Exporter en Excel</button>
+        </div>
 
-    <!-- Filters -->
-    <div class="filter-container">
-        <input type="date" class="form-control" placeholder="Filtrer par date" />
-    </div>
+        <!-- Filters -->
+        <div class="filter-container">
+            <input type="date" class="form-control" [(ngModel)]="searchDate" (change)="applyFilters()" placeholder="Filtrer par date" />
+        </div>
 
-    <!-- Table -->
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Username</th>
-                <th>Temps d'arrivé</th>
-                <th>Temps de départ</th>
-                <th>Date</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (item of presences; track $index) {
-            <tr>
-                <td>{{ item.id }}</td>
-                <td>{{ getUserName(item.user_id) }}</td>
-                <td>{{ item.check_in_time }}</td>
-                <td>{{ item.check_out_time }}</td>
-                <td>{{ item.date }}</td>
-                <td>
-                    <span class="badge rounded-pill bg-success">{{ item.status }}</span>
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
-</div>
+        <!-- Table -->
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Temps d'arrivé</th>
+                    <th>Temps de départ</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of filteredpresence; track $index) {
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ getUserName(item.user_id) }}</td>
+                    <td>{{ item.check_in_time }}</td>
+                    <td>{{ item.check_out_time }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>
+                        <span class="badge rounded-pill bg-success">{{ item.status }}</span>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>

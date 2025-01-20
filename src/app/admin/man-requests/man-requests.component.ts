@@ -2,7 +2,7 @@ import { UsersService } from './../../shared/services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { MandemandeService,} from '../../shared/services/mandemande.service';
+import { MandemandeService } from '../../shared/services/mandemande.service';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -22,29 +22,36 @@ export class ManRequestsComponent implements OnInit {
     status: string; 
     created_at: string; 
   }[] = [];
-  users: any[] = []
-
+  users: any[] = [];
 
   filteredDemandes = [...this.demandes];
+  demandStatuses: string[] = ['accepté', 'refusé', 'en attente'];
+  paginatedDemandes: any[] = [];
   demandTypes: string[] = [];
   searchEmployee: string = '';
   searchType: string = '';
   searchDate: string = '';
+  searchStatus: string = '';
 
-  constructor(private MandemandeService:MandemandeService, private usersService : UsersService) {}
+  // Pagination variables
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+  totalPages: number = 0;
+
+  constructor(private MandemandeService: MandemandeService, private usersService: UsersService) {}
 
   ngOnInit() {
     this.fetchDemandes();
-    this.getusers()
-
+    this.getusers();
+    this.updatePagination();
   }
 
-  getusers(){
+  getusers() {
     this.usersService.getUsers(sessionStorage.getItem("department_id")).subscribe(
       data => {
-        this.users = data
+        this.users = data;
       }
-    )
+    );
   }
 
   getUserName(user_id: string) {
@@ -57,19 +64,57 @@ export class ManRequestsComponent implements OnInit {
   }
 
   fetchDemandes() {
-    const DepId = sessionStorage.getItem("department_id") == 'null' ?   null :sessionStorage.getItem("department_id")
+    const DepId = sessionStorage.getItem("department_id") == 'null' ? null : sessionStorage.getItem("department_id");
     this.MandemandeService.getRequests(DepId).subscribe((data) => {
-        this.demandes = data;
-        this.filteredDemandes = [...this.demandes];
-        this.demandTypes = Array.from(new Set(this.demandes.map(d => d.type)));
+      this.demandes = data;
+      this.filteredDemandes = [...this.demandes];
+      this.demandTypes = Array.from(new Set(this.demandes.map(d => d.type)));
+      this.updatePagination();
     });
   }
+
   applyFilters() {
     this.filteredDemandes = this.demandes.filter(demande =>
       (!this.searchEmployee || demande.user_id == this.searchEmployee) &&
       (!this.searchType || demande.type == this.searchType) &&
-      (!this.searchDate || demande.created_at.split(' ')[0] == this.searchDate)
+      (!this.searchDate || demande.created_at.split(' ')[0] == this.searchDate) &&
+      (!this.searchStatus || demande.status == this.searchStatus)
     );
+    this.currentPage = 1;
+    this.updatePagination();
+  }
+
+  updatePagination() {
+    this.totalPages = Math.ceil(this.filteredDemandes.length / this.itemsPerPage);
+    this.paginatedDemandes = this.filteredDemandes.slice(
+      (this.currentPage - 1) * this.itemsPerPage,
+      this.currentPage * this.itemsPerPage
+    );
+  }
+
+  changePage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.updatePagination();
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePagination();
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePagination();
+    }
+  }
+
+  getPages(): number[] {
+    return Array.from({ length: this.totalPages }, (_, i) => i + 1);
   }
 
   printDemande(id: string) {
@@ -79,7 +124,7 @@ export class ManRequestsComponent implements OnInit {
       console.error('Demande not found!');
       return;
     }
-  
+
     const content = `
     <div style="font-family: Arial, sans-serif; margin: 20px;">
       <h1 style="text-align: center; color: #4CAF50;">Demande Details</h1>
@@ -116,21 +161,21 @@ export class ManRequestsComponent implements OnInit {
       </footer>
     </div>
     `;
-  
+
     // Create an invisible container to render content
     const tempDiv = document.createElement('div');
     tempDiv.style.position = 'absolute';
     tempDiv.style.left = '-9999px';
     tempDiv.innerHTML = content;
     document.body.appendChild(tempDiv);
-  
+
     // Convert the container to canvas and generate PDF
     html2canvas(tempDiv).then(canvas => {
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF();
       pdf.addImage(imgData, 'PNG', 10, 10, 180, canvas.height * 180 / canvas.width);
       pdf.save(`demande_${id}.pdf`);
-      document.body.removeChild(tempDiv); 
+      document.body.removeChild(tempDiv);
     });
   }
 
@@ -138,6 +183,7 @@ export class ManRequestsComponent implements OnInit {
     this.MandemandeService.updateRequestStatus(id, 'accepté', sessionStorage.getItem('id')).subscribe(
       () => {
         this.fetchDemandes();
+        this.applyFilters();
       },
       error => {
         console.error('Error accepting demande:', error);
@@ -149,6 +195,7 @@ export class ManRequestsComponent implements OnInit {
     this.MandemandeService.updateRequestStatus(id, 'refuse', sessionStorage.getItem('id')).subscribe(
       () => {
         this.fetchDemandes();
+        this.applyFilters();
       },
       error => {
         console.error('Error rejecting demande:', error);
