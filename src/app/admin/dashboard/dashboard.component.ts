@@ -16,7 +16,6 @@ export class DashboardComponent implements OnInit {
   totalEmployees: number = 0;
   employees : any[] = [];
   departments: any[] = [];
-  colors: string[] = ['#4caf50', '#2196f3', '#ff9800', '#9c27b0', '#00bcd4'];
   presenceData: any[] = [];
   absenceData: any[] = [];
   absenceLabels: string[] = [];
@@ -41,15 +40,6 @@ export class DashboardComponent implements OnInit {
       }));
     });
   
-    // Fetch presence data for today
-    // this.presenceService.getPresencesForToday().subscribe((data: any) => {
-    //   this.presenceData = 
-    // });
-  
-    // // Fetch absence data for today
-    // this.presenceService.getAbsencesForToday().subscribe((data: any) => {
-    //   this.absenceData = 
-    // });
   
     // Fetch request data
     this.requestService.getRequests(null).subscribe((data: any[]) => {

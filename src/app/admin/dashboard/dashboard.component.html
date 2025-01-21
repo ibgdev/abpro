@@ -11,12 +11,16 @@
         </div>
     </section>
 
-    <!-- Cartes des départements -->
-    <section class="department-cards">
-        <div class="card" *ngFor="let department of departments; let i = index"
-            [ngStyle]="{'background-color': colors[i % colors.length]}">
-            <h3>{{ department.name }}</h3>
-            <p>Employés : {{ getEmpNumDep(department.id) }}</p>
+    <!-- Carte des départements -->
+    <section class="department-summary">
+        <div class="department-card">
+            <h3>Résumé des départements</h3>
+            <ul>
+                <li *ngFor="let department of departments">
+                    <span>{{ department.name }}</span>
+                    <span>Employés : {{ getEmpNumDep(department.id) }}</span>
+                </li>
+            </ul>
         </div>
     </section>
 
@@ -33,19 +37,6 @@
         <div class="summary-card">
             <h3>Demandes en attente</h3>
             <p>{{ pendingRequests }}</p>
-        </div>
-    </section>
-
-    <!-- Graphiques de présence -->
-    <section class="graphs">
-        <!-- Graphique des présences -->
-        <div class="graph-card">
-            <h3>Présences d'aujourd'hui</h3>
-        </div>
-
-        <!-- Graphique des absences -->
-        <div class="graph-card">
-            <h3>Absences d'aujourd'hui</h3>
         </div>
     </section>
 </div>

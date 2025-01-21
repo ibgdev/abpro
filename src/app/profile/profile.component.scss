@@ -1,166 +1,125 @@
-$light-blue: #f0fff0;
-$green: #52a5a3;
-$gray-light: #6b6d6d;
-$gray-dark: #5d6063;
-$white: #ffffff;
-$border-color: #e9e9e9;
+$primary-color: #52a5a3;
+$secondary-color: #f5f5f5;
+$text-color: #333;
+$border-color: #e0e0e0;
+$hover-color: darken($primary-color, 10%);
 
 .account-settings {
-    width: 50%;
-    max-width: 600px;
-    background: $white;
+    width: 100%;
+    max-width: 900px;
+    background: $secondary-color;
     border-radius: 15px;
-    padding: 20px;
-    margin-top: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-top: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     position: relative;
-    color: $gray-dark;
+    color: $text-color;
 
     .back-button {
         position: absolute;
-        top: 15px;
-        left: 15px;
+        top: 20px;
+        left: 20px;
 
         .back-btn {
-            text-decoration: none;
-            padding: 8px 15px;
-            font-size: 0.9rem;
-            border: none;
+            padding: 10px 15px;
+            background-color: $primary-color;
+            color: #fff;
             border-radius: 5px;
-            background-color: $gray-light;
-            color: $white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
 
             &:hover {
-                background-color: darken($gray-light, 10%);
+                background-color: $hover-color;
             }
         }
     }
 
     .user-profile {
         text-align: center;
-        margin-bottom: 20px;
-        padding-top: 40px;
+        margin-bottom: 30px;
+        padding-top: 50px;
 
         .user-avatar img {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            border: 4px solid $green;
+            border: 3px solid $primary-color;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         h4.user-name {
-            margin-top: 15px;
+            margin-top: 20px;
             font-size: 1.8rem;
-            font-weight: bold;
-            color: $green;
+            font-weight: 600;
+            color: $primary-color;
         }
 
         h6.user-email {
-            margin-top: 8px;
+            margin-top: 10px;
             font-size: 1rem;
-            color: lighten($gray-light, 10%);
+            color: lighten($text-color, 20%);
         }
     }
 
-    .about {
+    .about, .details, .edit-password {
         margin-top: 20px;
-        text-align: center;
-
-        h5 {
-            font-size: 1.3rem;
-            color: $green;
-        }
-
-        p {
-            font-size: 1rem;
-            color: $gray-dark;
-            line-height: 1.5;
-        }
-    }
-
-    .details {
-        margin-top: 20px;
-        padding: 15px;
-        background-color: lighten($light-blue, 10%);
+        padding: 20px;
+        background: lighten($secondary-color, 5%);
         border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
         h5 {
-            font-size: 1.2rem;
-            color: $green;
-            margin-bottom: 10px;
-            border-bottom: 1px solid $border-color;
-            padding-bottom: 5px;
+            color: $primary-color;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
         }
 
-        .details-list {
+        p, ul {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: $text-color;
+        }
+
+        ul {
             list-style: none;
             padding: 0;
-            font-size: 1rem;
-            color: $gray-dark;
 
             li {
                 margin-bottom: 10px;
+
+                strong {
+                    font-weight: 600;
+                }
             }
         }
     }
 
-    .edit-password {
-        margin-top: 20px;
-        padding: 15px;
-        background-color: lighten($light-blue, 10%);
-        border-radius: 10px;
+    .edit-password .form-group input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid $border-color;
+        transition: border-color 0.3s;
+        margin-bottom: 10px;
 
-        h5 {
-            font-size: 1.2rem;
-            color: $green;
-            margin-bottom: 15px;
+        &:focus {
+            border-color: $primary-color;
+            outline: none;
         }
+        
+    }
 
-        .form-group {
-            margin-bottom: 15px;
+    .save-password-btn {
+        padding: 12px 20px;
+        background-color: $primary-color;
+        color: #fff;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
 
-            label {
-                display: block;
-                font-size: 0.9rem;
-                color: lighten($gray-light, 10%);
-                margin-bottom: 5px;
-            }
-
-            input {
-                width: 100%;
-                padding: 10px;
-                font-size: 0.9rem;
-                border: 1px solid $border-color;
-                border-radius: 5px;
-                background-color: lighten($light-blue, 15%);
-                color: $gray-dark;
-            }
-
-            input:focus {
-                outline: none;
-                border-color: $green;
-            }
-
-            input::placeholder {
-                color: darken($gray-light, 20%);
-            }
-        }
-
-        .save-password-btn {
-            padding: 10px 20px;
-            font-size: 1rem;
-            background-color: $green;
-            color: $white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-
-            &:hover {
-                background-color: darken($green, 10%);
-            }
+        &:hover {
+            background-color: $hover-color;
         }
     }
 }

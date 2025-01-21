@@ -5,7 +5,7 @@
         <div class="account-settings shadow">
             <!-- Back Button -->
             <div class="back-button">
-                <a href="#" class="btn btn-secondary back-btn"><i class="fas fa-arrow-left"></i> Back</a>
+                <a href="#" class="btn btn-secondary back-btn"><i class="fas fa-arrow-left"></i> Retour</a>
             </div>
 
             <!-- User Profile Section -->
@@ -20,72 +20,71 @@
 
             <!-- About Section -->
             <div class="about">
-                <h5>About Me</h5>
-                <p>je suis {{role}}, je suis un {{role}} de département : {{getDepartmentName()}}</p>
+                <h5>À propos de moi</h5>
+                <p>Je suis {{role}}, responsable du département : {{getDepartmentName()}}.</p>
             </div>
 
             <!-- Additional Details Section -->
             <div class="details">
-                <h5>Details</h5>
+                <h5>Détails</h5>
                 <ul class="details-list">
                     <li><strong>Email :</strong> {{email}}</li>
                     <li><strong>Département :</strong> {{getDepartmentName()}}</li>
-                    <li><strong>profession :</strong> {{role}}</li>
+                    <li><strong>Rôle :</strong> {{role}}</li>
                 </ul>
             </div>
 
             <!-- Edit Password Section -->
             <div class="edit-password">
-                <h5>Edit Password</h5>
+                <h5>Modifier le mot de passe</h5>
                 <form #changePasswordForm="ngForm" (ngSubmit)="changePassword()" novalidate>
                     <!-- Current Password -->
                     <div class="form-group">
-                        <label for="current-password">Current Password</label>
+                        <label for="current-password">Mot de passe actuel</label>
                         <input type="password" id="current-password" name="current-password" class="form-control"
-                            [(ngModel)]="current_password" required placeholder="Enter current password">
+                            [(ngModel)]="current_password" required placeholder="Saisir le mot de passe actuel">
                         <div *ngIf="!changePasswordForm.controls['current-password']?.valid && changePasswordForm.controls['current-password']?.touched"
                             class="text-danger small">
-                            Current password is required.
+                            Le mot de passe actuel est requis.
                         </div>
                     </div>
 
                     <!-- New Password -->
                     <div class="form-group">
-                        <label for="new-password">New Password</label>
+                        <label for="new-password">Nouveau mot de passe</label>
                         <input type="password" id="new-password" name="new-password" class="form-control"
                             [(ngModel)]="new_password" #newPasswordField="ngModel" minlength="6" required
-                            placeholder="Enter new password">
+                            placeholder="Saisir un nouveau mot de passe">
                         <div *ngIf="newPasswordField.errors && newPasswordField.touched" class="text-danger small">
-                            <div *ngIf="newPasswordField.errors['required']">New password is required.</div>
-                            <div *ngIf="newPasswordField.errors['minlength']">Password must be at least 6 characters
-                                long.</div>
+                            <div *ngIf="newPasswordField.errors['required']">Le nouveau mot de passe est requis.</div>
+                            <div *ngIf="newPasswordField.errors['minlength']">Le mot de passe doit contenir au moins 6
+                                caractères.</div>
                         </div>
                     </div>
 
                     <!-- Confirm New Password -->
                     <div class="form-group">
-                        <label for="confirm-password">Confirm New Password</label>
+                        <label for="confirm-password">Confirmer le mot de passe</label>
                         <input type="password" id="confirm-password" name="confirm-password" class="form-control"
                             [(ngModel)]="conf_pass" #confirmPasswordField="ngModel" required
-                            placeholder="Confirm new password">
+                            placeholder="Confirmer le nouveau mot de passe">
                         <div *ngIf="confirmPasswordField.errors && confirmPasswordField.touched"
                             class="text-danger small">
-                            <div *ngIf="confirmPasswordField.errors['required']">Confirm password is required.</div>
+                            Le mot de passe de confirmation est requis.
                         </div>
                         <div *ngIf="new_password !== conf_pass && confirmPasswordField.touched"
                             class="text-danger small">
-                            Passwords do not match.
+                            Les mots de passe ne correspondent pas.
                         </div>
                     </div>
 
                     <!-- Submit Button -->
                     <button type="submit" class="btn btn-primary save-password-btn"
                         [disabled]="!changePasswordForm.valid || new_password !== conf_pass">
-                        Save Password
+                        Enregistrer le mot de passe
                     </button>
                 </form>
             </div>
-
         </div>
     </div>
 </div>
