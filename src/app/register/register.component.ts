@@ -3,13 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { Router } from '@angular/router';
 import { RegisterService } from '../shared/services/register.service';
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [SharedModule,SweetAlert2Module],
+  imports: [SharedModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })

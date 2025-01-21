@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DigitalClockComponent } from "../../digital-clock/digital-clock.component";;
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
 import { PresenceService } from '../../shared/services/presence.service';
 import { SharedModule } from '../../shared/shared.module';
@@ -8,7 +7,7 @@ import { SharedModule } from '../../shared/shared.module';
 @Component({
   selector: 'app-presence',
   standalone: true,
-  imports: [DigitalClockComponent, SweetAlert2Module, SharedModule],
+  imports: [DigitalClockComponent, SharedModule],
   templateUrl: './presence.component.html',
   styleUrl: './presence.component.scss'
 })
