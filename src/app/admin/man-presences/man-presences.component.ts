@@ -29,7 +29,6 @@ export class ManPresencesComponent implements OnInit {
       data => {
         this.presences = data
         this.filteredpresence = [...this.presences];
-        console.log(data, "working")
       }
     );
   }

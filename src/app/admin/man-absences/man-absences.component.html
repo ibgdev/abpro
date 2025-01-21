@@ -1,1 +1,29 @@
-<p>man-absences works!</p>
+<div class="container mt-4">
+    <div class="export">
+        <h2>Gestion des Absences</h2>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom Complet</th>
+                <th scope="col">Email</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of absences; $index">
+                <td>{{ item.id }}</td>
+                <td>{{ item.full_name }}</td>
+                <td>{{ item.email }}</td>
+                <td><span class="badge bg-secondary">En attente</span></td>
+                <td>    
+                    <button class="btn btn-sm btn-danger" (click)="markAbsent(item.id, item.email, item.full_name)">
+                        <i class="fas fa-times"></i> Marquer Absent
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
