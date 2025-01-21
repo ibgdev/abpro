@@ -20,4 +20,5 @@ export class SidebarComponent implements OnInit {
     sessionStorage.clear();
     this.router.navigate(['/login']);
   }
+  
 }
