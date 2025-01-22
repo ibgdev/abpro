@@ -7,10 +7,10 @@
                 </div>
                 <div class="col-xs-7" *ngIf="isSuperAdmin">
                     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddUser"
-                        (click)="workingedit('Ajouter Nouveau Utilisateur',false)" >
+                        (click)="workingedit('Ajouter Nouveau Utilisateur',false)">
                         <i class="material-icons">&#xE147; </i> <span>Nouveau Utilisateur</span>
                     </a>
-                    <button class="btn btn-primary" (click)="exportData()" >
+                    <button class="btn btn-primary" (click)="exportData()">
                         <i class="material-icons">&#xE24D;</i> Exporter en Excel
                     </button>
                 </div>
@@ -98,11 +98,12 @@
                     <div class="mb-3">
                         <label for="password" class="col-form-label">Mot de passe:</label>
                         <input type="password" class="form-control" name="password" [(ngModel)]="password"
-                            #passwordModal="ngModel" required>
+                        #passwordModal="ngModel" [required]="!addUser">
                         <div *ngIf="passwordModal.invalid && passwordModal.touched" class="text-danger small">
                             <div *ngIf="passwordModal.errors?.['required']">Le mot de passe est obligatoire.</div>
                         </div>
                     </div>
+
 
                     <!-- Department -->
                     <div class="mb-3" *ngIf="isSuperAdmin">
@@ -134,9 +135,11 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                 <!-- Submit Button -->
-                <button class="btn btn-primary" [disabled]="addUserForm.invalid" [hidden]="addUser" (click)="addAccount()">Enregistrer
+                <button class="btn btn-primary" [disabled]="addUserForm.invalid" [hidden]="addUser"
+                    (click)="addAccount()">Enregistrer
                     Utilisateur</button>
-                <button class="btn btn-primary" [disabled]="addUserForm.invalid" [hidden]="!addUser" (click)="updateAccount()">Mise à jour
+                <button class="btn btn-primary" [disabled]="addUserForm.invalid" [hidden]="!addUser"
+                    (click)="updateAccount()">Mise à jour
                     Utilisateur</button>
             </div>
         </div>

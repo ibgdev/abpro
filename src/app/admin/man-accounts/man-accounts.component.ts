@@ -173,14 +173,15 @@ export class ManAccountsComponent implements OnInit {
   }
 
   // edit user settings
-  settings(userId: number, fullname: string, email: string, password: string, department: string, role: string) {
-    this.working = "Ajouter Nouveau Utilisateur";
+// In the settings method of the component
+settings(userId: number, fullname: string, email: string, password: string, department: string, role: string) {
+    this.working = "Mise à jour d'Utilisateur"; // Corrected modal title for update
     this.full_name = fullname;
     this.email = email;
-    this.password = password;
+    this.password = ''; // Clear password field for updates
     this.department = department;
     this.role = role;
-  }
+}
   //export excel
 
   exportData() {
