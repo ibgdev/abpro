@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AbsencesService {
-  private markApiUrl = 'http://localhost:808/absences/mark-absence.php';
+  private markApiUrl = 'http://localhost:8080/absences/mark-absence.php';
   private getAbsencesApiUrl = 'http://localhost:8080/absences/getAbsences.php';
   private sendEmailApiUrl = 'http://localhost:8080/absences/sendEmail.php'; 
 
