@@ -95,7 +95,7 @@
                     </div>
 
                     <!-- Password -->
-                    <div class="mb-3">
+                    <div class="mb-3" *ngIf="isSuperAdmin">
                         <label for="password" class="col-form-label">Mot de passe:</label>
                         <input type="password" class="form-control" name="password" [(ngModel)]="password"
                         #passwordModal="ngModel" [required]="!addUser">

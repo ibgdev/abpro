@@ -35,17 +35,17 @@ export class ManAccountsComponent implements OnInit {
     private excelExportService: ExportService,
   ) { }
   ngOnInit(): void {
-    this.getUsers()
     this.getDepartments()
+    this.getUsers()
   }
 
   // Get users
   getUsers() {
-    this.usersService.getUsers(sessionStorage.getItem("department_id")).subscribe(data => {
-      this.users = data
-    })
+    const departmentId = this.isSuperAdmin ? null : sessionStorage.getItem("department_id");
+    this.usersService.getUsers(departmentId).subscribe(data => {
+      this.users = data;
+    });
   }
-
   workingedit(msg: string, edit : boolean) {
     this.working = msg;
     this.addUser = edit;
@@ -173,12 +173,11 @@ export class ManAccountsComponent implements OnInit {
   }
 
   // edit user settings
-// In the settings method of the component
 settings(userId: number, fullname: string, email: string, password: string, department: string, role: string) {
     this.working = "Mise à jour d'Utilisateur"; // Corrected modal title for update
     this.full_name = fullname;
     this.email = email;
-    this.password = ''; // Clear password field for updates
+    this.password = password; // Clear password field for updates
     this.department = department;
     this.role = role;
 }

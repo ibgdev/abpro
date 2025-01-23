@@ -40,7 +40,6 @@ export class ManAbsencesComponent implements OnInit {
   sendEmail(email: string, fullname: string) {
     this.absencesservice.sendEmail(email, fullname).subscribe(
       (response) => {
-        console.log(response)
         Swal.fire({
           title: 'Email envoyé!',
           text: `Un email a été envoyé à ${fullname} (${email}).`,
